@@ -1,0 +1,6 @@
+keywords 239379 selectors 27
+planted PALIMPSEST sheet27 (r+c)%2 consistent by checks: {4: 2}
+scan time 42.7
+REAL consistent by checks (all selectors): {0: 1582271, 1: 185300, 2: 11425, 3: 504, 4: 76}
+NULL0 consistent by checks: {1: 113010, 2: 1716, 3: 815, 4: 29}
+NULL1 consistent by checks: {0: 1582271, 1: 231510, 2: 13330, 3: 719, 4: 19}

@@ -1,0 +1,117 @@
+perms (deduped, incl. inverses): 112385
+  planted col W8 57164023 inv L=8 order=1 side=0 alph=1: checks=9
+  planted col W8 34672150 fwd L=5 order=1 side=0 alph=1: checks=7
+  planted col W8 57623140 inv L=7 order=1 side=1 alph=1: checks=2
+  planted col W8 21740635 inv L=7 order=0 side=1 alph=0: checks=2
+  planted col W8 31406257 inv L=8 order=1 side=1 alph=1: checks=4
+  planted decim a59 b20 fwd L=8 order=0 side=0 alph=1: checks=4
+planted recovered 6/6
+scan time 6.2
+identity (direct) consistent periods:
+  PT-free AZ: [13, 16, 19, 23, 24, 26]
+  PT-free KA: [16, 19, 20, 23, 24, 26]
+  CT-free AZ: [16, 19, 20, 23, 24, 26]
+  CT-free KA: [16, 19, 20, 24, 26]
+[REAL] consistent models: 4072101 of 23376080
+[REAL]   checks>=1: 70023
+[REAL]   checks>=2: 879
+[REAL]   checks>=3: 11
+[REAL]   checks>=4: 0
+[REAL]   checks>=5: 0
+[REAL]   checks>=6: 0
+[REAL]   checks>=8: 0
+[REAL]   route W39 end rowC->colS inv | trans>sub | CT-free | AZ | L=11 | checks=3
+[REAL]   route W39 end rowC->colS inv | trans>sub | CT-free | KA | L=11 | checks=3
+[REAL]   col W7 1542603 inv | trans>sub | CT-free | KA | L=11 | checks=3
+[REAL]   col W7 1543602 inv | trans>sub | CT-free | KA | L=11 | checks=3
+[REAL]   col W7 2541603 inv | trans>sub | CT-free | KA | L=11 | checks=3
+[REAL]   col W7 2543601 inv | trans>sub | CT-free | KA | L=11 | checks=3
+[REAL]   col W7 3541602 inv | trans>sub | CT-free | KA | L=11 | checks=3
+[REAL]   col W7 3542601 inv | trans>sub | CT-free | KA | L=11 | checks=3
+[REAL]   col W8 50764312 fwd | trans>sub | PT-free | AZ | L=24 | checks=3
+[REAL]   col W8 62403175 fwd | trans>sub | PT-free | AZ | L=24 | checks=3
+[REAL]   dblrot 16x14 fwd | trans>sub | PT-free | AZ | L=10 | checks=3
+[NULL0] consistent models: 3751098 of 23376080
+[NULL0]   checks>=1: 86035
+[NULL0]   checks>=2: 493
+[NULL0]   checks>=3: 11
+[NULL0]   checks>=4: 0
+[NULL0]   checks>=5: 0
+[NULL0]   checks>=6: 0
+[NULL0]   checks>=8: 0
+[NULL1] consistent models: 4073441 of 23376080
+[NULL1]   checks>=1: 75368
+[NULL1]   checks>=2: 541
+[NULL1]   checks>=3: 7
+[NULL1]   checks>=4: 0
+[NULL1]   checks>=5: 0
+[NULL1]   checks>=6: 0
+[NULL1]   checks>=8: 0
+[NULL2] consistent models: 4299031 of 23376080
+[NULL2]   checks>=1: 86113
+[NULL2]   checks>=2: 813
+[NULL2]   checks>=3: 0
+[NULL2]   checks>=4: 0
+[NULL2]   checks>=5: 0
+[NULL2]   checks>=6: 0
+[NULL2]   checks>=8: 0
+[NULL3] consistent models: 4043707 of 23376080
+[NULL3]   checks>=1: 87563
+[NULL3]   checks>=2: 689
+[NULL3]   checks>=3: 9
+[NULL3]   checks>=4: 0
+[NULL3]   checks>=5: 0
+[NULL3]   checks>=6: 0
+[NULL3]   checks>=8: 0
+[NULL4] consistent models: 4008381 of 23376080
+[NULL4]   checks>=1: 69751
+[NULL4]   checks>=2: 668
+[NULL4]   checks>=3: 2
+[NULL4]   checks>=4: 0
+[NULL4]   checks>=5: 0
+[NULL4]   checks>=6: 0
+[NULL4]   checks>=8: 0
+[NULL5] consistent models: 4038724 of 23376080
+[NULL5]   checks>=1: 90319
+[NULL5]   checks>=2: 639
+[NULL5]   checks>=3: 27
+[NULL5]   checks>=4: 18
+[NULL5]   checks>=5: 0
+[NULL5]   checks>=6: 0
+[NULL5]   checks>=8: 0
+[NULL6] consistent models: 3817853 of 23376080
+[NULL6]   checks>=1: 64573
+[NULL6]   checks>=2: 591
+[NULL6]   checks>=3: 6
+[NULL6]   checks>=4: 0
+[NULL6]   checks>=5: 0
+[NULL6]   checks>=6: 0
+[NULL6]   checks>=8: 0
+[NULL7] consistent models: 3876722 of 23376080
+[NULL7]   checks>=1: 97700
+[NULL7]   checks>=2: 674
+[NULL7]   checks>=3: 6
+[NULL7]   checks>=4: 0
+[NULL7]   checks>=5: 0
+[NULL7]   checks>=6: 0
+[NULL7]   checks>=8: 0
+[NULL8] consistent models: 3706607 of 23376080
+[NULL8]   checks>=1: 83448
+[NULL8]   checks>=2: 719
+[NULL8]   checks>=3: 5
+[NULL8]   checks>=4: 0
+[NULL8]   checks>=5: 0
+[NULL8]   checks>=6: 0
+[NULL8]   checks>=8: 0
+[NULL9] consistent models: 3835619 of 23376080
+[NULL9]   checks>=1: 82710
+[NULL9]   checks>=2: 715
+[NULL9]   checks>=3: 54
+[NULL9]   checks>=4: 0
+[NULL9]   checks>=5: 0
+[NULL9]   checks>=6: 0
+[NULL9]   checks>=8: 0
+thr      : [0, 1, 2, 3, 4, 5, 6, 8]
+REAL     : [4072101, 70023, 879, 11, 0, 0, 0, 0]
+NULL mean: [3945118.3, 82358.0, 654.2, 12.7, 1.8, 0.0, 0.0, 0.0]
+NULL max : [4299031, 97700, 813, 54, 18, 0, 0, 0]

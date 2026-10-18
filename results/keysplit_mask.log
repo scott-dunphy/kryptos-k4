@@ -1,0 +1,8 @@
+lore words 60 dict sizes {5: 9982, 8: 29855, 10: 30831, 13: 14925, 16: 0}
+[PLANTED] stageA configs 187616, survivors (>=1 check) 41956, stageB word hits 2
+planted: SHADOW found: True time 267.2
+[REAL] stageA configs 187616, survivors (>=1 check) 30500, stageB word hits 0
+time 39.3
+[NULL0] stageA configs 187616, survivors (>=1 check) 41885, stageB word hits 0
+[NULL1] stageA configs 187616, survivors (>=1 check) 29951, stageB word hits 0
+[NULL2] stageA configs 187616, survivors (>=1 check) 49521, stageB word hits 0

@@ -1,0 +1,94 @@
+REAL ch4 per selector: {'sheet27 (r+c)%4': 12, 'col0 c%2': 7, 'col0 c%4': 23, 'col0 thirds': 2, 'col1 c%2': 4, 'col1 c%4': 27, 'col1 (c-r)%3': 1}
+  TINYBREACHINTHEUPPERLEFTHA ph5 KA vig mask>table sheet27 (r+c)%4 ch=4
+  TINYBREACHINTHEUPPERLEFTHA ph5 KA beau mask>table sheet27 (r+c)%4 ch=4
+  ACHINESE ph4 KA vig table>mask col0 c%4 ch=4
+  ACHINESE ph4 KA vig table>mask col1 c%4 ch=4
+  ACOEMETI ph2 KA beau table>mask col1 c%4 ch=4
+  ACOEMETI ph2 KA var table>mask col1 c%4 ch=4
+  ADHERENT ph2 KA vig table>mask col0 c%4 ch=4
+  ADHERENT ph2 KA vig table>mask col1 c%4 ch=4
+  ALLWHERE ph4 KA vig table>mask col0 c%4 ch=4
+  ALLWHERE ph4 KA vig table>mask col1 c%4 ch=4
+  ANACUSIS ph7 KA beau table>mask col1 c%4 ch=4
+  ANACUSIS ph7 KA var table>mask col1 c%4 ch=4
+  SEMIMADMAN ph7 AZ vig mask>table sheet27 (r+c)%4 ch=4
+  SEMIMADMAN ph7 AZ beau mask>table sheet27 (r+c)%4 ch=4
+  SILICIFY ph2 KA var mask>table col0 c%4 ch=4
+  SIPHONEOUS ph4 AZ var mask>table col1 (c-r)%3 ch=4
+  DECOHERE ph4 KA beau table>mask col0 c%4 ch=4
+  DECOHERE ph4 KA beau table>mask col1 c%2 ch=4
+  DECOHERE ph4 KA beau table>mask col1 c%4 ch=4
+  DECOHERE ph4 KA var table>mask col0 c%4 ch=4
+  DECOHERE ph4 KA var table>mask col1 c%2 ch=4
+  DECOHERE ph4 KA var table>mask col1 c%4 ch=4
+  ATINYBREACHINTHEUPPERLEFTH ph6 KA vig mask>table sheet27 (r+c)%4 ch=4
+  ATINYBREACHINTHEUPPERLEFTH ph6 KA beau mask>table sheet27 (r+c)%4 ch=4
+  AXOPETAL ph5 KA vig table>mask col0 c%2 ch=4
+  AXOPETAL ph5 KA vig table>mask col0 c%4 ch=4
+  MULETEER ph2 KA beau table>mask col1 c%4 ch=4
+  MULETEER ph2 KA var table>mask col1 c%4 ch=4
+  STMESSAGEXTHIRTYEIG ph6 KA beau table>mask col0 thirds ch=4
+  STMESSAGEXTHIRTYEIG ph6 KA var table>mask col0 thirds ch=4
+  BLAMEFUL ph6 KA beau table>mask col0 c%4 ch=4
+  BLAMEFUL ph6 KA beau table>mask col1 c%4 ch=4
+  BLAMEFUL ph6 KA var table>mask col0 c%4 ch=4
+  BLAMEFUL ph6 KA var table>mask col1 c%4 ch=4
+  BOBJEROM ph7 KA beau table>mask col0 c%2 ch=4
+  BOBJEROM ph7 KA beau table>mask col0 c%4 ch=4
+  BOBJEROM ph7 KA beau table>mask col1 c%2 ch=4
+  BOBJEROM ph7 KA beau table>mask col1 c%4 ch=4
+  BOBJEROM ph7 KA var table>mask col0 c%2 ch=4
+  BOBJEROM ph7 KA var table>mask col0 c%4 ch=4
+  BOBJEROM ph7 KA var table>mask col1 c%2 ch=4
+  BOBJEROM ph7 KA var table>mask col1 c%4 ch=4
+  EATINYBREACHINTHEUPPERLEFT ph7 KA vig mask>table sheet27 (r+c)%4 ch=4
+  EATINYBREACHINTHEUPPERLEFT ph7 KA beau mask>table sheet27 (r+c)%4 ch=4
+  BUGINESE ph4 KA beau table>mask col0 c%4 ch=4
+  BUGINESE ph4 KA beau table>mask col1 c%4 ch=4
+  BUGINESE ph4 KA var table>mask col0 c%4 ch=4
+  BUGINESE ph4 KA var table>mask col1 c%4 ch=4
+  VERONESE ph4 KA beau table>mask col0 c%4 ch=4
+  VERONESE ph4 KA beau table>mask col1 c%4 ch=4
+  VERONESE ph4 KA var table>mask col0 c%4 ch=4
+  VERONESE ph4 KA var table>mask col1 c%4 ch=4
+  ENCIPHER ph5 KA beau table>mask col0 c%4 ch=4
+  ENCIPHER ph5 KA beau table>mask col1 c%4 ch=4
+  ENCIPHER ph5 KA var table>mask col0 c%4 ch=4
+  ENCIPHER ph5 KA var table>mask col1 c%4 ch=4
+  RAMIFORM ph5 KA beau table>mask col0 c%2 ch=4
+  RAMIFORM ph5 KA beau table>mask col0 c%4 ch=4
+  RAMIFORM ph5 KA beau table>mask col1 c%4 ch=4
+  RAMIFORM ph5 KA var table>mask col0 c%2 ch=4
+  RAMIFORM ph5 KA var table>mask col0 c%4 ch=4
+  RAMIFORM ph5 KA var table>mask col1 c%4 ch=4
+  NYBREACHINTHEUPPERLEFTHAND ph3 KA vig mask>table sheet27 (r+c)%4 ch=4
+  NYBREACHINTHEUPPERLEFTHAND ph3 KA beau mask>table sheet27 (r+c)%4 ch=4
+  CEVENOLE ph0 KA vig table>mask col0 c%4 ch=4
+  CEVENOLE ph0 KA vig table>mask col1 c%4 ch=4
+  INYBREACHINTHEUPPERLEFTHAN ph4 KA vig mask>table sheet27 (r+c)%4 ch=4
+  INYBREACHINTHEUPPERLEFTHAN ph4 KA beau mask>table sheet27 (r+c)%4 ch=4
+  REMIFORM ph5 KA beau table>mask col0 c%2 ch=4
+  REMIFORM ph5 KA beau table>mask col0 c%4 ch=4
+  REMIFORM ph5 KA beau table>mask col1 c%4 ch=4
+  REMIFORM ph5 KA var table>mask col0 c%2 ch=4
+  REMIFORM ph5 KA var table>mask col0 c%4 ch=4
+  REMIFORM ph5 KA var table>mask col1 c%4 ch=4
+  EULYTITE ph3 KA vig table>mask col0 c%4 ch=4
+  EULYTITE ph3 KA vig table>mask col1 c%4 ch=4
+NULL0 ch4 total 28
+NULL1 ch4 total 18
+NULL2 ch4 total 16
+NULL3 ch4 total 11
+NULL4 ch4 total 6
+NULL5 ch4 total 29
+NULL6 ch4 total 85
+NULL7 ch4 total 22
+REAL total 76 NULL totals [28, 18, 16, 11, 6, 29, 85, 22]
+  col1 c%4: real 27  null mean 0.0 max 0
+  col0 c%4: real 23  null mean 4.1 max 8
+  sheet27 (r+c)%4: real 12  null mean 12.6 max 64
+  col0 c%2: real 7  null mean 0.0 max 0
+  col1 c%2: real 4  null mean 0.0 max 0
+  col0 thirds: real 2  null mean 0.6 max 5
+  col1 (c-r)%3: real 1  null mean 3.2 max 6
+  sheet27 c%2: real 0  null mean 0.0 max 0

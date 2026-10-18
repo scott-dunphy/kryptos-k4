@@ -1,0 +1,55 @@
+keywords 239379, keystreams (word x phase) 2312019, tests x12 = 27744228
+planted SHADOW tab=KA rule=0 order=0 nuance=0: counts [2, 0, 2, 2, 2, 2]
+planted PALIMPSEST tab=KA rule=0 order=1 nuance=0: counts [1, 0, 1, 1, 1, 1]
+planted ABSCISSA tab=AZ rule=1 order=0 nuance=1: counts [0, 0, 2, 0, 2, 0]
+planted LAYERTWO tab=KA rule=2 order=1 nuance=1: counts [0, 0, 2, 0, 2, 0]
+planted BERLINWALL tab=KA rule=0 order=0 nuance=2: counts [0, 0, 1, 0, 1, 0]
+scan time 143.6
+REAL  {'exact': 0, 'exact<=1slip': 0, 'nuance1 AZ': 57, 'nuance1 KA': 157, 'nuance2 AZ': 12890, 'nuance2 KA': 9398}
+  hit MISDECISION phase 7 AZ vig table>mask nuance1 AZ
+  hit COMPOSEDLY phase 1 AZ vig table>mask nuance1 AZ
+  hit PROSOPOPLEGIA phase 5 AZ beau table>mask nuance1 KA
+  hit PROSOPOPLEGIA phase 5 AZ var table>mask nuance1 KA
+  hit MISPAGINATION phase 1 KA vig table>mask nuance1 AZ
+  hit MOCUCK phase 0 KA beau table>mask nuance1 KA
+  hit MOCUCK phase 0 KA var table>mask nuance1 KA
+  hit CONSTRAINMENT phase 7 AZ beau table>mask nuance1 KA
+  hit CONSTRAINMENT phase 7 AZ var table>mask nuance1 KA
+  hit PSEUDOVELAR phase 1 AZ vig table>mask nuance1 KA
+  hit ACTINIFORM phase 8 KA vig table>mask nuance1 KA
+  hit TELEOSTEOUS phase 0 AZ beau table>mask nuance1 AZ
+  hit TELEOSTEOUS phase 0 AZ var table>mask nuance1 AZ
+  hit PTEROPHORUS phase 9 AZ beau table>mask nuance1 KA
+  hit PTEROPHORUS phase 9 AZ var table>mask nuance1 KA
+  hit MTHECHAMBERCAUSEDTHEFLAM phase 16 AZ beau table>mask nuance1 KA
+  hit MTHECHAMBERCAUSEDTHEFLAM phase 16 AZ var table>mask nuance1 KA
+  hit COSCINOMANCY phase 7 KA beau table>mask nuance1 KA
+  hit COSCINOMANCY phase 7 KA var table>mask nuance1 KA
+  hit HANDSIMADEATINYBREA phase 6 AZ vig table>mask nuance1 KA
+  hit QUADRUPLANE phase 3 AZ beau table>mask nuance1 KA
+  hit QUADRUPLANE phase 3 AZ var table>mask nuance1 KA
+  hit MYOTONUS phase 1 AZ beau table>mask nuance1 KA
+  hit MYOTONUS phase 1 AZ var table>mask nuance1 KA
+  hit CRASSULACEOUS phase 7 KA vig table>mask nuance1 AZ
+  hit HEAUTOMORPHISM phase 1 KA beau table>mask nuance1 AZ
+  hit HEAUTOMORPHISM phase 1 KA var table>mask nuance1 AZ
+  hit CRESCOGRAPH phase 2 AZ beau table>mask nuance1 KA
+  hit CRESCOGRAPH phase 2 AZ var table>mask nuance1 KA
+  hit CRITIC phase 5 KA beau table>mask nuance1 KA
+  hit CRITIC phase 5 KA var table>mask nuance1 KA
+  hit CURARIZATION phase 8 KA vig table>mask nuance1 KA
+  hit TICFIELDXTHEINFORMA phase 5 AZ beau table>mask nuance1 KA
+  hit TICFIELDXTHEINFORMA phase 5 AZ var table>mask nuance1 KA
+  hit HETEROCLITAL phase 0 KA vig table>mask nuance1 KA
+  hit ANAPHYLACTOID phase 5 KA beau table>mask nuance1 KA
+  hit ANAPHYLACTOID phase 5 KA var table>mask nuance1 KA
+  hit DANAIS phase 4 AZ beau table>mask nuance1 KA
+  hit DANAIS phase 4 AZ var table>mask nuance1 KA
+  hit REDISSOLUTION phase 4 KA beau table>mask nuance1 AZ
+NULL0 {'exact': 0, 'exact<=1slip': 0, 'nuance1 AZ': 384, 'nuance1 KA': 344, 'nuance2 AZ': 22334, 'nuance2 KA': 6398}
+NULL1 {'exact': 0, 'exact<=1slip': 0, 'nuance1 AZ': 65, 'nuance1 KA': 38, 'nuance2 AZ': 5832, 'nuance2 KA': 6207}
+NULL2 {'exact': 0, 'exact<=1slip': 0, 'nuance1 AZ': 263, 'nuance1 KA': 198, 'nuance2 AZ': 5828, 'nuance2 KA': 10943}
+NULL3 {'exact': 0, 'exact<=1slip': 0, 'nuance1 AZ': 342, 'nuance1 KA': 373, 'nuance2 AZ': 5419, 'nuance2 KA': 7381}
+NULL4 {'exact': 0, 'exact<=1slip': 0, 'nuance1 AZ': 286, 'nuance1 KA': 176, 'nuance2 AZ': 5895, 'nuance2 KA': 9985}
+NULL mean {'exact': 0.0, 'exact<=1slip': 0.0, 'nuance1 AZ': 268.0, 'nuance1 KA': 225.8, 'nuance2 AZ': 9061.6, 'nuance2 KA': 8182.8}
+NULL max  {'exact': 0, 'exact<=1slip': 0, 'nuance1 AZ': 384, 'nuance1 KA': 373, 'nuance2 AZ': 22334, 'nuance2 KA': 10943}

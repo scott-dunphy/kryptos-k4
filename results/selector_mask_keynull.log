@@ -1,0 +1,9 @@
+REAL dict words [23, 27] distinct words 18
+REAL ct, random 8-letter keys [7, 11] distinct 8
+REAL ct, random 8-letter keys [1, 2] distinct 2
+REAL ct, random 8-letter keys [8, 10] distinct 7
+REAL ct, random 8-letter keys [15, 17] distinct 12
+REAL ct, random 8-letter keys [8, 3] distinct 7
+REAL ct, letter-shuffled words [7, 15] distinct 10
+REAL ct, letter-shuffled words [19, 14] distinct 14
+REAL ct, letter-shuffled words [20, 17] distinct 13

@@ -11,6 +11,7 @@ A systematic attack on K4, the unsolved 97-letter section of Jim Sanborn's *Kryp
 | Path | What |
 |---|---|
 | `NOTES.md` | The experiment log: hypothesis, bounds, result, verdict for ~180 tests. Start here. |
+| `data/friends_prior_work.md` | Everything two parallel teams (Barney, Reggie) ruled out, the bugs their reviews found, and their open gaps. Read before a new experiment. |
 | `PLAN.md`, `TEAM_BOARD.md` | Planning rounds and the agent team's shared board. |
 | `k4lib.py` | Ciphertext, cribs, alphabets, quadgram scorer. |
 | `cribfilter.py`, `perms.py` | Numba crib-consistency kernels and transposition generators. |

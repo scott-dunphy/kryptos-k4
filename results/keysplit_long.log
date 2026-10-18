@@ -1,0 +1,8 @@
+k1 candidates by length {11: 807, 12: 804, 13: 801, 14: 798, 15: 6716, 16: 4166, 17: 2600, 18: 1624, 19: 1206, 20: 972, 21: 852, 22: 807, 23: 779, 24: 763, 25: 754, 26: 750}
+[PLANTED] stageA configs 187616, survivors (>=1 check) 43687, stageB word hits 6
+planted ADINGANDTHEABSENCEO found: True
+[REAL] stageA configs 187616, survivors (>=1 check) 30500, stageB word hits 0
+time 173.9
+[NULL0] stageA configs 187616, survivors (>=1 check) 41885, stageB word hits 0
+[NULL1] stageA configs 187616, survivors (>=1 check) 29951, stageB word hits 0
+[NULL2] stageA configs 187616, survivors (>=1 check) 49521, stageB word hits 0

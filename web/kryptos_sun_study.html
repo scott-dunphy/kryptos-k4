@@ -1,0 +1,543 @@
+<title>Kryptos Sun Study</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: full-screen WebGL view; left card = scene settings, right card = ray-traced analysis; bottom strip = live readout. Copper/granite palette. */
+:root{
+  --bg:#efe9df; --fg:#2a211a; --muted:#6b5c4e; --panel:rgba(250,246,238,.94); --line:#cbbfae;
+  --accent:#9a5a2c; --accent-fg:#fff; --ok:#2f7a4a; --warn:#a8741a; --bad:#a63a2a; --chip:#e4dccf;
+  --display:"Fraunces",Georgia,serif; --body:"IBM Plex Sans",system-ui,sans-serif; --mono:"IBM Plex Mono",Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#17130f; --fg:#efe6d8; --muted:#b1a08c; --panel:rgba(28,23,18,.94); --line:#4a3d31; --accent:#d58b4d; --accent-fg:#1a120b;
+  --ok:#6cc08a; --warn:#e0b05a; --bad:#e07a68; --chip:#2c241c; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#17130f; --fg:#efe6d8; --muted:#b1a08c; --panel:rgba(28,23,18,.94); --line:#4a3d31; --accent:#d58b4d; --accent-fg:#1a120b;
+  --ok:#6cc08a; --warn:#e0b05a; --bad:#e07a68; --chip:#2c241c; color-scheme:dark}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);overflow:hidden}
+#view{position:absolute;inset:0;width:100%;height:100%;display:block}
+.card{position:absolute;top:calc(12px + env(safe-area-inset-top,0px));width:min(340px,calc(100vw - 24px));
+  background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px;box-sizing:border-box;
+  max-height:calc(100% - 70px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));overflow:auto;backdrop-filter:blur(6px)}
+#panel{left:calc(12px + env(safe-area-inset-left,0px))}
+#ana{right:calc(12px + env(safe-area-inset-right,0px))}
+.card h1{font-family:var(--display);font-weight:700;font-size:22px;margin:0 0 2px;text-wrap:balance}
+.card h2{font-family:var(--display);font-weight:500;font-size:17px;margin:0 0 6px;text-wrap:balance}
+.sub{color:var(--muted);font-size:12px;margin:0 0 10px;line-height:1.45}
+.row{display:flex;align-items:center;gap:8px;margin:6px 0;font-size:13px}
+.row label{flex:0 0 96px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-size:10.5px}
+.row input[type=range]{flex:1;min-width:0;accent-color:var(--accent)}
+.row select,.row input[type=date],.row input[type=number]{flex:1;min-width:0;font:inherit;font-size:13px;background:transparent;color:var(--fg);border:1px solid var(--line);border-radius:6px;padding:3px 6px}
+.val{font-family:var(--mono);font-size:12px;min-width:58px;text-align:right;font-variant-numeric:tabular-nums}
+.btns{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+button{font:inherit;font-size:12.5px;padding:6px 10px;border-radius:7px;border:1px solid var(--line);background:transparent;color:var(--fg);cursor:pointer}
+button:hover{border-color:var(--accent)} button:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+button.primary{background:var(--accent);color:var(--accent-fg);border-color:var(--accent)}
+.sec{border-top:1px solid var(--line);margin-top:10px;padding-top:8px;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.chk{display:flex;align-items:center;gap:6px;font-size:13px;margin:6px 0}
+.chk input{accent-color:var(--accent)}
+.note{font-size:11.5px;color:var(--muted);line-height:1.45;margin:6px 0}
+.pill{display:inline-block;font-family:var(--mono);font-size:10.5px;padding:1px 6px;border-radius:9px;background:var(--chip);border:1px solid var(--line)}
+.pill.ok{color:var(--ok);border-color:var(--ok)} .pill.warn{color:var(--warn);border-color:var(--warn)} .pill.bad{color:var(--bad);border-color:var(--bad)}
+table{border-collapse:collapse;width:100%;font-size:11.5px;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:3px 4px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:500;font-size:10.5px;text-transform:uppercase;letter-spacing:.05em}
+td.mono,.mono{font-family:var(--mono)}
+.scroll{overflow-x:auto;max-height:260px;overflow-y:auto}
+textarea{width:100%;box-sizing:border-box;min-height:90px;font-family:var(--mono);font-size:11px;background:transparent;color:var(--fg);border:1px solid var(--line);border-radius:6px;padding:6px}
+#readout{position:absolute;left:calc(12px + env(safe-area-inset-left,0px));right:calc(12px + env(safe-area-inset-right,0px));bottom:calc(10px + env(safe-area-inset-bottom,0px));display:flex;flex-wrap:wrap;gap:4px 16px;
+  font-family:var(--mono);font-size:12px;color:var(--fg);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:6px 12px;box-sizing:border-box;pointer-events:none}
+#readout b{font-weight:500;color:var(--muted)}
+#photoImg{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;pointer-events:none;opacity:.5}
+details summary{cursor:pointer;font-size:12.5px;margin:4px 0}
+@media (max-width:760px){
+  .card{position:relative;top:auto;left:auto!important;right:auto!important;width:auto;margin:10px;max-height:none}
+  body{overflow:auto} #view{position:relative;height:60vh} #readout{position:relative;left:auto;right:auto;bottom:auto;margin:10px}
+  #photoImg{height:60vh}
+}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+
+<canvas id="view"></canvas>
+<img id="photoImg" alt="" hidden>
+
+<div id="panel" class="card">
+  <h1>Kryptos Sun Study</h1>
+  <p class="sub">Sunlight through the cut letters, traced ray by ray and stopped by anything in the way. Each dimension carries its source and an uncertainty range. Nothing here has been matched to a photograph yet.</p>
+
+  <div class="sec">Sun</div>
+  <div class="row"><label for="date">Date</label><input type="date" id="date" value="1999-10-27"></div>
+  <div class="row"><label for="hour">Local clock</label><input type="range" id="hour" min="5" max="20" step="0.0166667" value="14.3833"><span class="val" id="hourv">14:23</span></div>
+  <div class="row"><label for="tzmode">Clock</label><select id="tzmode"><option value="auto" selected>US Eastern, DST by date</option><option value="est">EST (UTC−5)</option><option value="edt">EDT (UTC−4)</option></select></div>
+  <p class="note" id="tzNote"></p>
+  <div class="chk"><input type="checkbox" id="manual"><label for="manual">Set the sun by hand</label></div>
+  <div class="row"><label for="az">Sun azimuth</label><input type="range" id="az" min="0" max="359" step="1" value="180"><span class="val" id="azv">180°</span></div>
+  <div class="row"><label for="el">Sun elevation</label><input type="range" id="el" min="1" max="89" step="1" value="35"><span class="val" id="elv">35°</span></div>
+
+  <div class="sec">Sculpture (assumptions)</div>
+  <div class="row"><label for="heading">Front faces</label><input type="range" id="heading" min="0" max="359" step="1" value="140"><span class="val" id="headingv">140°</span></div>
+  <p class="note" id="headingNote"></p>
+  <div class="row"><label for="bulge">Cipher half</label><select id="bulge"><option value="1" selected>bulges toward the courtyard (photos)</option><option value="-1">curves away from the courtyard (test only)</option></select></div>
+  <div class="row"><label for="layout">Letter spacing</label><select id="layout"><option value="justify" selected>each row spread to the plate width (likely)</option><option value="pitch">fixed 31-column pitch, left-aligned</option><option value="measured">measured apertures (pasted below)</option></select></div>
+  <details><summary>All dimensions and sources</summary><div class="scroll"><table id="dimTable"></table></div></details>
+  <details><summary>Paste measured aperture positions</summary>
+    <p class="note">JSON list of {"face":"cipher"|"tableau","row":r,"i":index in row,"u":0-1 along the row as its reader sees it,"v":0-1 bottom to top}. Rows and indices follow the Dunin transcript. Unlisted letters keep the spread layout.</p>
+    <textarea id="apIn" spellcheck="false" placeholder='[{"face":"cipher","row":27,"i":0,"u":0.012,"v":0.031}]'></textarea>
+    <div class="btns"><button id="apLoad">Use these positions</button></div><p class="note" id="apMsg"></p>
+  </details>
+
+  <div class="sec">View</div>
+  <div class="row"><label for="which">Trace</label><select id="which"><option value="k4" selected>K4 only</option><option value="cipher">Cipher half</option><option value="all">All 1,735 letters + 4 ?</option></select></div>
+  <div class="chk"><input type="checkbox" id="decal" checked><label for="decal">Draw traced letters (obstruction-checked)</label></div>
+  <div class="chk"><input type="checkbox" id="shadows" checked><label for="shadows">Rendered shadows (GPU, coarse)</label></div>
+  <div class="chk"><input type="checkbox" id="pools" checked><label for="pools">Show both pools</label></div>
+  <div class="btns">
+    <button id="vFront">Cipher side</button><button id="vBack">Tableau side</button><button id="vTop">From above</button><button id="vLow">Ground, low</button>
+    <button id="vPool">Eye at calm pool</button><button id="vReset">Reset view</button>
+  </div>
+</div>
+
+<div id="ana" class="card">
+  <h2>Ray-traced analysis</h2>
+  <p class="sub" id="anaSum">—</p>
+  <div class="scroll"><table id="k4Table"><thead><tr><th>#</th><th>Letter</th><th>Sun reaches</th><th>Light lands on</th></tr></thead><tbody></tbody></table></div>
+
+  <div class="sec">Reflection in the calm pool</div>
+  <p class="note" id="reflSum">—</p>
+
+  <div class="sec">Does it survive small errors?</div>
+  <p class="note">Re-runs the trace 200 times with heading, clock time and every dimension drawn inside its stated range. A landing counts as stable when it hits the same surface and the same cell (copper) or stays within 5 cm (ground) in at least 90% of runs.</p>
+  <div class="btns"><button class="primary" id="jitter">Run robustness test</button></div>
+  <p class="note" id="jitterOut"></p>
+
+  <div class="sec">Photo check</div>
+  <p class="note"><span class="pill bad">first check failed</span> Against Gillogly's photo of the cipher half from behind (camera time 1999-10-27 14:23): with these dimensions no realistic camera reproduces the positions of 7 readable letters (the fit runs off to an infinitely distant camera), so the plate proportions are off. The diagonal dark band in that photo is probably the shadow of a live courtyard tree, which is not modelled. What the photo does confirm: the petrified tree hides columns 0–4 from that camera, light lands on the paving behind the cipher half, and the tableau letters are mirrored when seen from the cipher side (the tableau is read from behind).</p>
+  <p class="note">Next: measure 30+ letter positions on the high-resolution Library of Congress image, fit the shape, then re-run this check without retuning.</p>
+  <p class="note">Reference images for a first check (none has a documented camera position):</p>
+  <ul class="note" style="padding-left:16px;margin:4px 0">
+    <li><a href="http://www.voynich.net/Kryptos/full/cipherback.jpg" target="_blank" rel="noopener">Gillogly, cipher half from behind</a>: letter light on the paving; camera time 1999-10-27 14:23 (the opening setting).</li>
+    <li><a href="https://www.loc.gov/pictures/item/2011631531/" target="_blank" rel="noopener">Highsmith, Library of Congress</a>: dense letter light inside the cipher curve; undated; best resolution for measuring apertures.</li>
+    <li><a href="https://www.elonka.com/kryptos/pics/images/GSA-Kryptos.jpg" target="_blank" rel="noopener">GSA slide</a>: front view, letter light right of the tableau; undated.</li>
+  </ul>
+  <div class="row"><label for="camx">Camera x,y,z (m)</label><input type="number" id="camx" step="0.1" value="0" style="max-width:62px"><input type="number" id="camy" step="0.1" value="1.6" style="max-width:62px"><input type="number" id="camz" step="0.1" value="6" style="max-width:62px"></div>
+  <div class="row"><label for="camfov">Lens (v-FOV°)</label><input type="number" id="camfov" step="1" value="45"></div>
+  <div class="btns"><label class="pill" for="photo" style="cursor:pointer;padding:6px 10px">Load photo…</label><input type="file" id="photo" accept="image/*" hidden><button id="camApply">Use this camera</button><button id="photoClear">Clear photo</button></div>
+
+  <div class="sec">Reproduce this result</div>
+  <div class="btns"><button id="export">Show settings and results as JSON</button><button id="copy">Copy</button></div>
+  <textarea id="exportOut" spellcheck="false" hidden readonly></textarea>
+</div>
+
+<div id="readout">
+  <span><b>sun az</b> <span id="rAz">—</span></span><span><b>elev</b> <span id="rEl">—</span></span>
+  <span><b>UTC offset</b> <span id="rTz">—</span></span><span><b>status</b> <span id="rSt">—</span></span><span><b>limits</b> plate thickness (0.25–0.5 in) not modelled; nearby building shade not modelled</span>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/objects/Reflector.js"></script>
+<script>
+(function(){
+// ---------- transcripts (Elonka Dunin, as on the copper; rows 0-27; no clipping) ----------
+const LEFT=["EMUFPHZLRFAXYUSDJKZLDKRNSHGNFIVJ","YQTQUXQBQVYUVLLTREVJYQTMKYRDMFD","VFPJUDEEHZWETZYVGWHKKQETGFQJNCE","GGWHKK?DQMCPFQZDQMMIAGPFXHQRLG","TIMVMZJANQLVKQEDAGDVFRPJUNGEUNA","QZGZLECGYUXUEENJTBJLBQCRTBJDFHRR","YIZETKZEMVDUFKSJHKFWHKUWQLSZFTI","HHDDDUVH?DWKBFUFPWNTDFIYCUQZERE","EVLDKFEZMOQQJLTTUGSYQPFEUNLAVIDX","FLGGTEZ?FKZBSFDQVGOGIPUFXHHDRKF","FHQNTGPUAECNUVPDJMQCLQUMUNEDFQ","ELZZVRRGKFFVOEEXBDMVPNFQXEZLGRE","DNQFMPNZGLFLPMRJQYALMGNUVPDXVKP","DQUMEBEDMHDAFMJGZNUPLGEWJLLAETG","ENDYAHROHNLSRHEOCPTEOIBIDYSHNAIA","CHTNREYULDSLLSLLNOHSNOSMRWXMNE","TPRNGATIHNRARPESLNNELEBLPIIACAE","WMTWNDITEENRAHCTENEUDRETNHAEOE","TFOLSEDTIWENHAEIOYTEYQHEENCTAYCR","EIFTBRSPAMHHEWENATAMATEGYEERLB","TEEFOASFIOTUETUAEOTOARMAEERTNRTI","BSEDDNIAAHTTMSTEWPIEROAGRIEWFEB","AECTDDHILCEIHSITEGOEAOSDDRYDLORIT","RKLMLEHAGTDHARDPNEOHMGFMFEUHE","ECDMRIPFEIMEHNLSSTTRTVDOHW?OBKR","UOXOGHULBSOLIFBBWFLRVQQPRNGKSSO","TWTQSJQSSEKZZWATJKLUDIAWINFBNYP","VTTMZFPKWGDKZXTJCDIGKUHUAUEKCAR"];
+const RIGHT=[" ABCDEFGHIJKLMNOPQRSTUVWXYZABCD","AKRYPTOSABCDEFGHIJLMNQUVWXZKRYP","BRYPTOSABCDEFGHIJLMNQUVWXZKRYPT","CYPTOSABCDEFGHIJLMNQUVWXZKRYPTO","DPTOSABCDEFGHIJLMNQUVWXZKRYPTOS","ETOSABCDEFGHIJLMNQUVWXZKRYPTOSA","FOSABCDEFGHIJLMNQUVWXZKRYPTOSAB","GSABCDEFGHIJLMNQUVWXZKRYPTOSABC","HABCDEFGHIJLMNQUVWXZKRYPTOSABCD","IBCDEFGHIJLMNQUVWXZKRYPTOSABCDE","JCDEFGHIJLMNQUVWXZKRYPTOSABCDEF","KDEFGHIJLMNQUVWXZKRYPTOSABCDEFG","LEFGHIJLMNQUVWXZKRYPTOSABCDEFGH","MFGHIJLMNQUVWXZKRYPTOSABCDEFGHI","NGHIJLMNQUVWXZKRYPTOSABCDEFGHIJL","OHIJLMNQUVWXZKRYPTOSABCDEFGHIJL","PIJLMNQUVWXZKRYPTOSABCDEFGHIJLM","QJLMNQUVWXZKRYPTOSABCDEFGHIJLMN","RLMNQUVWXZKRYPTOSABCDEFGHIJLMNQ","SMNQUVWXZKRYPTOSABCDEFGHIJLMNQU","TNQUVWXZKRYPTOSABCDEFGHIJLMNQUV","UQUVWXZKRYPTOSABCDEFGHIJLMNQUVW","VUVWXZKRYPTOSABCDEFGHIJLMNQUVWX","WVWXZKRYPTOSABCDEFGHIJLMNQUVWXZ","XWXZKRYPTOSABCDEFGHIJLMNQUVWXZK","YXZKRYPTOSABCDEFGHIJLMNQUVWXZKR","ZZKRYPTOSABCDEFGHIJLMNQUVWXZKRY"," ABCDEFGHIJKLMNOPQRSTUVWXYZABCD"];
+const ROWS=28, LAT=38.95227, LON=-77.14577;   // screen position from aerial imagery (estimate)
+
+// ---------- every physical parameter: value, plausible range, source/confidence ----------
+// conf: "published" (a source states it), "estimate" (derived or read off photos), "unknown" (placeholder)
+const SRC={wired:"Wired 2009: 9 ft 11 in main sculpture, 11 ft petrified-wood column",
+  pitch:"letter pitch ~3.45 in measured on Elonka Dunin's rubbings (8.5×11 in sheets)",
+  sheldon:"David Sheldon (Sanborn's assistant, via Spyscape): letters 3 in tall, plate 0.25 in",
+  elonka:"Elonka Dunin on site 2002-10-18: the viewer faces roughly northwest; aerial imagery puts the S along ~45-50°",
+  hole:"Sanborn (Dunin dinner notes): pool built in an existing 8-ft-diameter tree hole, in front of the tableau curve",
+  calm:"aerial imagery: dark slot ~6 × 2.5 m about 31 m away at bearing ~128° (estimate)"};
+const DIMS={
+  H:      {v:2.75, lo:2.55, hi:3.02, unit:"m", label:"Copper plate height", conf:"estimate", src:"28 rows × pitch ≈ 2.45 m of text plus margins; "+SRC.wired},
+  y0:     {v:0.05, lo:0.00, hi:0.20, unit:"m", label:"Plate bottom above ground", conf:"estimate", src:"bottom row about one pitch above the paving in photos (low confidence)"},
+  L:      {v:2.85, lo:2.30, hi:3.10, unit:"m", label:"Arc length of each half", conf:"estimate", src:"31 columns × "+SRC.pitch+"; a 7-point camera fit to Gillogly's 1999 photo prefers arc length ≈ 0.88 × plate height (≈2.4 m), unconfirmed"},
+  Rc:     {v:1.45, lo:1.20, hi:1.70, unit:"m", label:"Cipher half radius", conf:"estimate", src:"read off photos and aerial imagery; no published value"},
+  Rt:     {v:1.45, lo:1.20, hi:1.70, unit:"m", label:"Tableau half radius", conf:"estimate", src:"read off photos and aerial imagery; no published value"},
+  mTop:   {v:0.055, lo:0.03, hi:0.08, unit:"of H", label:"Margin above the top row", conf:"estimate", src:"set so the 28 rows span ~2.45 m"},
+  mBot:   {v:0.055, lo:0.03, hi:0.08, unit:"of H", label:"Margin below the bottom row", conf:"estimate", src:"set so the 28 rows span ~2.45 m"},
+  mSide:  {v:0.023, lo:0.00, hi:0.05, unit:"of arc", label:"Margin at each end of a row", conf:"estimate", src:"arc length minus 31 × pitch"},
+  glyph:  {v:0.87, lo:0.80, hi:0.92, unit:"of cell", label:"Letter height in its cell", conf:"published", src:SRC.sheldon+"; pitch estimated"},
+  treeX:  {v:-2.80, lo:-3.10, hi:-2.50, unit:"m", label:"Petrified tree x (left end)", conf:"estimate", src:"CIA: the tree is to the left of the screen seen from the front; stands next to the cipher half's end"},
+  treeZ:  {v:0.0, lo:-0.4, hi:0.4, unit:"m", label:"Petrified tree z", conf:"unknown", src:"placeholder"},
+  treeR:  {v:0.30, lo:0.20, hi:0.45, unit:"m", label:"Petrified tree radius", conf:"unknown", src:"placeholder"},
+  treeH:  {v:3.35, lo:3.2, hi:3.5, unit:"m", label:"Petrified tree height", conf:"published", src:SRC.wired},
+  bubX:   {v:1.20, lo:0.80, hi:1.60, unit:"m", label:"Bubbling pool centre x", conf:"estimate", src:SRC.hole},
+  bubZ:   {v:0.20, lo:-0.30, hi:0.60, unit:"m", label:"Bubbling pool centre z", conf:"estimate", src:SRC.hole},
+  bubR:   {v:1.10, lo:0.90, hi:1.22, unit:"m", label:"Bubbling pool radius", conf:"estimate", src:"no larger than the 8-ft (1.22 m radius) hole"},
+  bubW:   {v:-0.30, lo:-0.40, hi:-0.20, unit:"m", label:"Bubbling pool water level", conf:"estimate", src:"0.2-0.4 m below the paving in a 1999 photo"},
+  calmX:  {v:6.4, lo:3.0, hi:10.0, unit:"m", label:"Calm pool centre x", conf:"estimate", src:SRC.calm},
+  calmZ:  {v:30.3, lo:27.0, hi:33.0, unit:"m", label:"Calm pool centre z (toward courtyard)", conf:"estimate", src:SRC.calm},
+  calmR:  {v:1.6, lo:1.2, hi:2.2, unit:"m", label:"Calm pool radius (disk standing in for the slot)", conf:"estimate", src:SRC.calm},
+  water:  {v:-0.05, lo:-0.25, hi:0.0, unit:"m", label:"Calm pool water level", conf:"unknown", src:"placeholder"},
+  heading:{v:140, lo:-10, hi:10, unit:"° (± range)", label:"Bearing the front faces", conf:"estimate", src:SRC.elonka},
+  minutes:{v:0, lo:-10, hi:10, unit:"min (± range)", label:"Clock-time uncertainty", conf:"estimate", src:"camera clocks and recollections are rarely exact"}
+};
+const P={}; for(const k in DIMS)P[k]=DIMS[k].v;
+
+const $=id=>document.getElementById(id);
+function fillDimTable(){
+  const t=$("dimTable");
+  t.innerHTML="<tr><th>Parameter</th><th>Value</th><th>Range</th><th>Basis</th></tr>"+Object.entries(DIMS).map(([k,d])=>{
+    const cls=d.conf==="published"?"ok":d.conf==="estimate"?"warn":"bad";
+    return `<tr><td>${d.label}</td><td class="mono">${(+P[k]).toFixed(2)} ${d.unit}</td><td class="mono">${d.lo}…${d.hi}</td><td><span class="pill ${cls}">${d.conf}</span> ${d.src}</td></tr>`;}).join("");
+}
+
+// ---------- layout: aperture (u,v) on each face; u=0 is the start of a row as its reader sees it (cipher from the courtyard, tableau from behind) ----------
+let measured={}; // key face|row|i -> {u,v}
+function apertures(p,mode){
+  const out=[];
+  for(const [face,rows] of [["cipher",LEFT],["tableau",RIGHT]]){
+    const vTop=1-p.mTop, vBot=p.mBot;
+    for(let r=0;r<ROWS;r++){
+      const line=rows[r]; const n=line.length;
+      const v=vTop-(r+0.5)*(vTop-vBot)/ROWS;
+      for(let i=0;i<n;i++){const ch=line[i]; if(ch===" ")continue;
+        let u;
+        if(mode==="pitch") u=p.mSide+(i+0.5)*(1-2*p.mSide)/31;
+        else u=p.mSide+(i+0.5)*(1-2*p.mSide)/n;
+        let vv=v; const key=face+"|"+r+"|"+i;
+        if(mode==="measured"&&measured[key]){u=measured[key].u; vv=measured[key].v;}
+        const k4=face==="cipher"&&(r>24||(r===24&&i>=27));
+        out.push({face,row:r,i,ch,u,v:vv,n,k4,k4idx:k4?(r===24?i-27:4+(r-25)*31+i):-1, outside:u<0||u>1});
+      }
+    }
+  }
+  return out;
+}
+
+// ---------- geometry (local frame: x along the screen, y up, +z toward the courtyard/front) ----------
+// each half is a circular arc of radius R and arc length L (angle φ = L/R); the halves meet at the origin and bulge to opposite sides
+function arcs(p){const b=+$("bulge").value, pc=p.L/p.Rc, pt=p.L/p.Rt;
+  return {b,pc,pt,Cc:{x:-p.Rc*Math.sin(pc/2),z:-b*p.Rc*Math.cos(pc/2)},Ct:{x:p.Rt*Math.sin(pt/2),z:b*p.Rt*Math.cos(pt/2)}};}
+function facePoint(face,u,v,p){
+  const A=arcs(p), y=p.y0+v*p.H;
+  if(face==="cipher"){const th=Math.PI/2+A.pc/2-u*A.pc; return new THREE.Vector3(A.Cc.x+p.Rc*Math.cos(th), y, A.Cc.z+A.b*p.Rc*Math.sin(th));}
+  // the tableau is read from the back: its row start (u=0) is at the far end, its row end at the seam
+  const th=Math.PI/2+A.pt/2-u*A.pt; return new THREE.Vector3(A.Ct.x-p.Rt*Math.cos(th), y, A.Ct.z-A.b*p.Rt*Math.sin(th));
+}
+function faceTheta(face,x,z,p,A){
+  if(face==="cipher")return Math.atan2(A.b*(z-A.Cc.z),x-A.Cc.x);
+  return Math.atan2(A.b*(A.Ct.z-z),A.Ct.x-x);
+}
+function faceUV(face,pt,p){
+  const A=arcs(p), th=faceTheta(face,pt.x,pt.z,p,A), v=(pt.y-p.y0)/p.H;
+  if(face==="cipher")return {u:(Math.PI/2+A.pc/2-th)/A.pc,v};
+  return {u:(Math.PI/2+A.pt/2-th)/A.pt,v};
+}
+// ray o + t d against one half; returns smallest t > eps or Infinity
+function hitFace(face,o,d,p,eps){
+  const A=arcs(p), c=face==="cipher"?A.Cc:A.Ct, R=face==="cipher"?p.Rc:p.Rt, ph=face==="cipher"?A.pc:A.pt;
+  const ox=o.x-c.x, oz=o.z-c.z, a2=d.x*d.x+d.z*d.z; if(a2<1e-12)return Infinity;
+  const B=2*(ox*d.x+oz*d.z), C=ox*ox+oz*oz-R*R, D=B*B-4*a2*C; if(D<0)return Infinity;
+  const s=Math.sqrt(D); let best=Infinity;
+  for(const t of [(-B-s)/(2*a2),(-B+s)/(2*a2)]){ if(t<=eps||t>=best)continue;
+    const y=o.y+t*d.y; if(y<p.y0||y>p.y0+p.H)continue;
+    const th=faceTheta(face,o.x+t*d.x,o.z+t*d.z,p,A); if(Math.abs(th-Math.PI/2)>ph/2+1e-9)continue; best=t;}
+  return best;
+}
+function hitCyl(cx,cz,R,h,o,d,eps){
+  const ox=o.x-cx, oz=o.z-cz, A=d.x*d.x+d.z*d.z; if(A<1e-12)return Infinity;
+  const B=2*(ox*d.x+oz*d.z), C=ox*ox+oz*oz-R*R, D=B*B-4*A*C; if(D<0)return Infinity;
+  const s=Math.sqrt(D); let best=Infinity;
+  for(const t of [(-B-s)/(2*A),(-B+s)/(2*A)]){ if(t<=eps||t>=best)continue; const y=o.y+t*d.y; if(y<0||y>h)continue; best=t;}
+  return best;
+}
+function inDisk(x,z,cx,cz,R){return (x-cx)**2+(z-cz)**2<=R*R;}
+// trace light leaving point o in direction d; returns {surf, pt, face?, bounces}
+function traceOut(o,d,p,eps,depth){
+  const cand=[];
+  for(const f of ["cipher","tableau"]){const t=hitFace(f,o,d,p,eps); if(t<Infinity)cand.push({t,surf:"copper",face:f});}
+  const tt=hitCyl(p.treeX,p.treeZ,p.treeR,p.treeH,o,d,eps); if(tt<Infinity)cand.push({t:tt,surf:"tree"});
+  if(d.y<0){
+    const tg=-o.y/d.y; if(tg>eps){const x=o.x+tg*d.x,z=o.z+tg*d.z;
+      const inBub=inDisk(x,z,p.bubX,p.bubZ,p.bubR), inCalm=inDisk(x,z,p.calmX,p.calmZ,p.calmR);
+      if(inBub||inCalm){const tw=((inBub?p.bubW:p.water)-o.y)/d.y; cand.push({t:tw,surf:inBub?"bubbling pool":"calm pool"});}
+      else cand.push({t:tg,surf:"ground"});}
+  }
+  if(!cand.length)return {surf:"sky",pt:null};
+  cand.sort((a,b)=>a.t-b.t); const h=cand[0]; const pt=o.clone().addScaledVector(d,h.t);
+  if(h.surf==="calm pool"&&depth<2){ // still water: specular reflection, light continues
+    const r=traceOut(pt,new THREE.Vector3(d.x,-d.y,d.z),p,1e-6,depth+1); r.via="calm pool"; return r;}
+  return {surf:h.surf,pt,face:h.face};
+}
+function sunReaches(o,s,p,eps){ // ray toward the sun must not hit any panel or the tree
+  for(const f of ["cipher","tableau"]) if(hitFace(f,o,s,p,eps)<Infinity) return false;
+  if(hitCyl(p.treeX,p.treeZ,p.treeR,p.treeH,o,s,eps)<Infinity) return false;
+  return true;
+}
+
+// ---------- sun ----------
+function usDST(y,m,d){ // US rules: 1987-2006 first Sun Apr to last Sun Oct; 2007+ second Sun Mar to first Sun Nov; before 1987 last Sun Apr
+  const dow=(yy,mm,dd)=>new Date(Date.UTC(yy,mm-1,dd)).getUTCDay();
+  const nth=(yy,mm,n)=>{const f=dow(yy,mm,1); return 1+((7-f)%7)+7*(n-1);};
+  const last=(yy,mm)=>{const L=new Date(Date.UTC(yy,mm,0)).getUTCDate(); return L-dow(yy,mm,L);};
+  let s,e; if(y>=2007){s=[3,nth(y,3,2)];e=[11,nth(y,11,1)];} else if(y>=1987){s=[4,nth(y,4,1)];e=[10,last(y,10)];} else {s=[4,last(y,4)];e=[10,last(y,10)];}
+  const k=m*100+d; return k>=s[0]*100+s[1]&&k<e[0]*100+e[1];
+}
+function utcOffset(){const mode=$("tzmode").value; if(mode==="est")return -5; if(mode==="edt")return -4;
+  const [y,m,d]=$("date").value.split("-").map(Number); return usDST(y,m,d)?-4:-5;}
+function solar(dateStr,hourLocal,tz){
+  const [y,m,d]=dateStr.split("-").map(Number);
+  const doy=(Date.UTC(y,m-1,d)-Date.UTC(y,0,1))/86400000+1, utc=hourLocal-tz;
+  const g=2*Math.PI/365*(doy-1+(utc-12)/24);
+  const eqt=229.18*(0.000075+0.001868*Math.cos(g)-0.032077*Math.sin(g)-0.014615*Math.cos(2*g)-0.040849*Math.sin(2*g));
+  const decl=0.006918-0.399912*Math.cos(g)+0.070257*Math.sin(g)-0.006758*Math.cos(2*g)+0.000907*Math.sin(2*g)-0.002697*Math.cos(3*g)+0.00148*Math.sin(3*g);
+  const tst=((utc*60+eqt+4*LON)%1440+1440)%1440, ha=((tst/4)-180)*Math.PI/180, lat=LAT*Math.PI/180;
+  const cosZ=Math.sin(lat)*Math.sin(decl)+Math.cos(lat)*Math.cos(decl)*Math.cos(ha);
+  const zen=Math.acos(Math.max(-1,Math.min(1,cosZ)));
+  let az=Math.acos(Math.max(-1,Math.min(1,((Math.sin(lat)*Math.cos(zen))-Math.sin(decl))/(Math.cos(lat)*Math.sin(zen)||1e-9))));
+  az=ha>0?(az+Math.PI)%(2*Math.PI):(3*Math.PI-az)%(2*Math.PI);
+  return {az:az*180/Math.PI, el:90-zen*180/Math.PI};
+}
+const fmtHour=h=>{const hh=Math.floor(h),mm=Math.round((h-hh)*60);return `${String(hh+(mm===60?1:0)).padStart(2,"0")}:${String(mm%60).padStart(2,"0")}`;};
+// world: x east, y up, z south. Front (local +z) faces bearing θ -> rotation.y = π − θ
+const rotY=th=>Math.PI-th*Math.PI/180;
+function sunLocal(az,el,heading){
+  const er=el*Math.PI/180, ar=az*Math.PI/180;
+  const S=new THREE.Vector3(Math.cos(er)*Math.sin(ar), Math.sin(er), -Math.cos(er)*Math.cos(ar));
+  return S.applyAxisAngle(new THREE.Vector3(0,1,0), -rotY(heading));
+}
+
+// ---------- the trace ----------
+function traceAll(p,S,mode,which){
+  const aps=apertures(p,mode).filter(a=>which==="all"||(which==="cipher"?a.face==="cipher":a.k4));
+  const res=[]; const D=S.clone().negate();
+  const hg=(1-p.mTop-p.mBot)/ROWS*p.glyph*p.H;            // glyph height in metres
+  for(const a of aps){
+    if(a.outside){res.push({a,state:"off plate",land:null,lands:[]});continue;}
+    const Rf=a.face==="cipher"?p.Rc:p.Rt;
+    // sample points in metres along the plate: centre, left, right, down, up
+    const off=[[0,0],[-.3,0],[.3,0],[0,-.4],[0,.4]]; let lit=0; const lands=[];
+    for(const [dx,dy] of off){
+      const o=facePoint(a.face,a.u+dx*hg/(Math.PI*Rf),a.v+dy*hg/p.H,p);
+      if(!sunReaches(o,S,p,1e-5)){lands.push(null);continue;} lit++;
+      lands.push(traceOut(o,D,p,1e-5,0));
+    }
+    const state=lit===5?"lit":lit>0?"partly":"blocked";
+    const land=lands.find(x=>x)||null;
+    if(land&&land.surf==="copper"){const uv=faceUV(land.face,land.pt,p); land.cell=nearestCell(land.face,uv,p,mode);}
+    res.push({a,state,land,lands,hg});
+  }
+  return res;
+}
+let apCache=null;
+function nearestCell(face,uv,p,mode){
+  if(!apCache||apCache.key!==mode+JSON.stringify(p))apCache={key:mode+JSON.stringify(p),list:apertures(p,mode)};
+  let best=null,bd=1e9; for(const a of apCache.list){ if(a.face!==face)continue; const dd=((a.u-uv.u)*3)**2+(a.v-uv.v)**2; if(dd<bd){bd=dd;best=a;}}
+  const rowH=(1-p.mTop-p.mBot)/ROWS; const inside=best&&Math.abs(best.v-uv.v)<rowH*0.4;
+  return best?{row:best.row,i:best.i,ch:best.ch,onLetter:inside}:null;
+}
+const landKey=r=>{ if(!r.land)return r.state; const L=r.land;
+  if(L.surf==="copper")return `${L.face} r${L.cell.row}c${L.cell.i}`; if(L.surf==="ground")return "ground"; return L.surf;};
+
+// ---------- three.js scene ----------
+const canvas=$("view");
+const renderer=new THREE.WebGLRenderer({canvas,antialias:true});
+renderer.setPixelRatio(Math.min(devicePixelRatio,2)); renderer.shadowMap.enabled=true; renderer.shadowMap.type=THREE.PCFShadowMap;
+renderer.outputEncoding=THREE.sRGBEncoding;
+const scene=new THREE.Scene(); const camera=new THREE.PerspectiveCamera(45,1,0.05,200);
+const controls=new THREE.OrbitControls(camera,canvas); controls.enableDamping=true; controls.maxPolarAngle=Math.PI*0.52;
+const site=new THREE.Group(); scene.add(site);
+const FONT='bold {px}px "Arial Black","Helvetica Neue",Arial,sans-serif';
+let meshes=[];
+function plateTexture(face,p,mode){
+  const W=4096,Hh=2048,c=document.createElement("canvas");c.width=W;c.height=Hh;const g=c.getContext("2d");
+  g.fillStyle="#b87333";g.fillRect(0,0,W,Hh);
+  for(let i=0;i<9000;i++){g.fillStyle=`rgba(${60+Math.random()*60|0},${40+Math.random()*40|0},${20+Math.random()*20|0},${0.15+Math.random()*0.25})`;g.fillRect(Math.random()*W,Math.random()*Hh,2+Math.random()*4,2+Math.random()*4);}
+  const cellH=(1-p.mTop-p.mBot)/ROWS*Hh;
+  g.globalCompositeOperation="destination-out"; g.textAlign="center"; g.textBaseline="middle";
+  for(const a of apertures(p,mode)){ if(a.face!==face||a.outside)continue;
+    g.font=FONT.replace("{px}",(cellH*p.glyph).toFixed(1)); g.fillText(a.ch,a.u*W,(1-a.v)*Hh);}
+  const t=new THREE.CanvasTexture(c); t.encoding=THREE.sRGBEncoding; t.anisotropy=8; return t;
+}
+function buildSculpture(){
+  for(const m of meshes){site.remove(m); m.geometry.dispose();}
+  meshes=[]; const mode=$("layout").value;
+  for(const face of ["cipher","tableau"]){
+    const geo=new THREE.PlaneGeometry(1,1,160,1), pos=geo.attributes.position;
+    for(let i=0;i<pos.count;i++){const q=facePoint(face,pos.getX(i)+0.5,pos.getY(i)+0.5,P);pos.setXYZ(i,q.x,q.y,q.z);}
+    geo.computeVertexNormals(); const tex=plateTexture(face,P,mode);
+    const mat=new THREE.MeshStandardMaterial({map:tex,metalness:0.55,roughness:0.5,side:THREE.DoubleSide,transparent:true,alphaTest:0.5});
+    const m=new THREE.Mesh(geo,mat); m.castShadow=true; m.receiveShadow=true;
+    m.customDepthMaterial=new THREE.MeshDepthMaterial({depthPacking:THREE.RGBADepthPacking,map:tex,alphaTest:0.5});
+    site.add(m); meshes.push(m);
+  }
+  const tree=new THREE.Mesh(new THREE.CylinderGeometry(P.treeR,P.treeR*1.1,P.treeH,20),new THREE.MeshStandardMaterial({color:0x6b5240,roughness:0.95}));
+  tree.position.set(P.treeX,P.treeH/2,P.treeZ); tree.castShadow=tree.receiveShadow=true; site.add(tree); meshes.push(tree);
+  buildPools();
+}
+const ground=new THREE.Mesh(new THREE.PlaneGeometry(90,90),new THREE.MeshStandardMaterial({color:0xcfc6b6,roughness:0.95}));
+ground.rotation.x=-Math.PI/2; ground.receiveShadow=true; site.add(ground);
+let poolObjs=[];
+function buildPools(){
+  for(const o of poolObjs)site.remove(o); poolObjs=[];
+  const bub=new THREE.Mesh(new THREE.CircleGeometry(P.bubR,48),new THREE.MeshStandardMaterial({color:0x3f6f7a,roughness:0.35,metalness:0.1}));
+  bub.rotation.x=-Math.PI/2; bub.position.set(P.bubX,0.004,P.bubZ); bub.receiveShadow=true;
+  let calm;
+  if(THREE.Reflector){calm=new THREE.Reflector(new THREE.CircleGeometry(P.calmR,64),{textureWidth:1024,textureHeight:1024,color:0x6f8790});}
+  else calm=new THREE.Mesh(new THREE.CircleGeometry(P.calmR,64),new THREE.MeshStandardMaterial({color:0x2d4a55,roughness:0.05,metalness:0.6}));
+  calm.rotation.x=-Math.PI/2; calm.position.set(P.calmX,0.005,P.calmZ);
+  for(const o of [bub,calm]){o.visible=$("pools").checked; site.add(o); poolObjs.push(o);}
+}
+const grid=new THREE.GridHelper(90,90,0x7a6a58,0x9a8c7a); grid.position.y=0.002; grid.material.opacity=0.25; grid.material.transparent=true; site.add(grid);
+// traced-letter layer on the ground
+const DPX=4096, GROUND=16, dc=document.createElement("canvas"); dc.width=dc.height=DPX; const dg=dc.getContext("2d");
+const decalTex=new THREE.CanvasTexture(dc); decalTex.encoding=THREE.sRGBEncoding;
+const decal=new THREE.Mesh(new THREE.PlaneGeometry(GROUND,GROUND),new THREE.MeshBasicMaterial({map:decalTex,transparent:true,depthWrite:false}));
+decal.rotation.x=-Math.PI/2; decal.position.y=0.008; site.add(decal);
+// markers where light lands on copper
+const markGeo=new THREE.SphereGeometry(0.025,8,6), markMat=new THREE.MeshBasicMaterial({color:0xffc870});
+let marks=[];
+const sun=new THREE.DirectionalLight(0xfff2dc,1.6); sun.castShadow=true; sun.shadow.mapSize.set(4096,4096); sun.shadow.bias=-0.0002; sun.shadow.normalBias=0.01;
+Object.assign(sun.shadow.camera,{left:-9,right:9,top:9,bottom:-9,near:1,far:90}); scene.add(sun,sun.target);
+const hemi=new THREE.HemisphereLight(0xdfe8ee,0x6a5b4a,0.35); scene.add(hemi); const sky=new THREE.Color();
+
+function drawDecal(res,p){
+  dg.setTransform(1,0,0,1,0,0); dg.clearRect(0,0,DPX,DPX); const s=DPX/GROUND;
+  const toPx=q=>[q.x*s+DPX/2, q.z*s+DPX/2];
+  dg.textAlign="center"; dg.textBaseline="middle";
+  for(const m of marks)site.remove(m); marks=[];
+  for(const r of res){
+    if(!r.land||r.state==="blocked")continue;
+    if(r.land.surf==="copper"){const m=new THREE.Mesh(markGeo,markMat); m.position.copy(r.land.pt); site.add(m); marks.push(m); continue;}
+    const g0=r.lands[0], gu=r.lands[2], gv=r.lands[4];       // centre, right, up rays must all reach the ground
+    if(!g0||!gu||!gv||g0.surf!=="ground"||gu.surf!=="ground"||gv.surf!=="ground")continue;
+    const C=toPx(g0.pt),U=toPx(gu.pt),V=toPx(gv.pt), hg=r.hg;
+    const eux=(U[0]-C[0])/(.3*hg), euy=(U[1]-C[1])/(.3*hg), evx=(V[0]-C[0])/(.4*hg), evy=(V[1]-C[1])/(.4*hg); // px per metre
+    dg.setTransform(eux*hg,euy*hg,-evx*hg,-evy*hg,C[0],C[1]);   // 1 canvas unit = one glyph height
+    dg.fillStyle=r.a.k4?(r.state==="lit"?"rgba(255,205,120,.98)":"rgba(255,205,120,.45)"):(r.state==="lit"?"rgba(255,244,214,.9)":"rgba(255,244,214,.4)");
+    dg.font=FONT.replace("{px}","1"); dg.fillText(r.a.ch,0,0.04);
+  }
+  decalTex.needsUpdate=true;
+}
+
+// ---------- viewer reflection in the calm pool ----------
+function reflectionCheck(p,eyeLocal,res){
+  // image of point X in a still water plane y=w is X' = (x, 2w − y, z); visible if the eye→X' line crosses the plane inside the pool
+  let vis=0,tot=0; const seen=[];
+  for(const r of res){ if(!r.a.k4)continue; tot++;
+    const X=facePoint(r.a.face,r.a.u,r.a.v,p); const Xi=new THREE.Vector3(X.x,2*p.water-X.y,X.z);
+    const d=Xi.clone().sub(eyeLocal); if(d.y>=0)continue; const t=(p.water-eyeLocal.y)/d.y; const Q=eyeLocal.clone().addScaledVector(d,t);
+    if(!inDisk(Q.x,Q.z,p.calmX,p.calmZ,p.calmR))continue;
+    const up=X.clone().sub(Q); const L=up.length(); up.normalize(); // real path water -> letter must be clear
+    let blocked=false; for(const f of ["cipher","tableau"]){const th=hitFace(f,Q,up,p,1e-5); if(th<L-1e-3){blocked=true;break;}}
+    if(!blocked&&hitCyl(p.treeX,p.treeZ,p.treeR,p.treeH,Q,up,1e-5)<L)blocked=true;
+    if(!blocked){vis++; seen.push(r.a.k4idx);} }
+  return {vis,tot,seen};
+}
+
+// ---------- UI ----------
+let last=null;
+function settings(){
+  return {date:$("date").value, localClock:fmtHour(+$("hour").value), utcOffset:utcOffset(), tzMode:$("tzmode").value,
+    sunManual:$("manual").checked, headingDeg:+$("heading").value, cipherHalf:$("bulge").selectedOptions[0].text,
+    layout:$("layout").value, trace:$("which").value, decal:$("decal").checked,
+    camera:{position:camera.position.toArray().map(x=>+x.toFixed(3)),target:controls.target.toArray().map(x=>+x.toFixed(3)),vFovDeg:camera.fov},
+    dims:Object.fromEntries(Object.entries(DIMS).map(([k,d])=>[k,{value:P[k],range:[d.lo,d.hi],unit:d.unit,basis:d.conf,source:d.src}]))};
+}
+function update(){
+  P.heading=+$("heading").value;
+  const tz=utcOffset(); let az,el;
+  if($("manual").checked){az=+$("az").value;el=+$("el").value;} else {const s=solar($("date").value,+$("hour").value,tz);az=s.az;el=s.el;}
+  const up=el>0;
+  const er=el*Math.PI/180, ar=az*Math.PI/180;
+  const Sw=new THREE.Vector3(Math.cos(er)*Math.sin(ar),Math.sin(er),-Math.cos(er)*Math.cos(ar));
+  sun.position.copy(Sw).multiplyScalar(45); sun.target.position.set(0,0,0);
+  sun.intensity=up?1.3+0.9*Math.min(1,el/30):0; hemi.intensity=up?0.25+0.2*Math.min(1,el/30):0.1;
+  sky.setHSL(0.58,up?0.45:0.5,up?0.72*Math.min(1,0.35+el/25):0.08); scene.background=sky;
+  site.rotation.y=rotY(P.heading); renderer.shadowMap.enabled=$("shadows").checked;
+  for(const o of poolObjs)o.visible=$("pools").checked;
+  const S=sunLocal(az,el,P.heading);
+  const res=up?traceAll(P,S,$("layout").value,$("which").value):[];
+  decal.visible=$("decal").checked&&up; if(decal.visible)drawDecal(res,P); else {for(const m of marks)site.remove(m); marks=[];}
+  last={az,el,tz,res};
+  $("hourv").textContent=fmtHour(+$("hour").value); $("headingv").textContent=$("heading").value+"°";
+  $("azv").textContent=$("az").value+"°"; $("elv").textContent=$("el").value+"°";
+  $("rAz").textContent=az.toFixed(1)+"°"; $("rEl").textContent=el.toFixed(1)+"°"; $("rTz").textContent="UTC"+(tz>=0?"+":"")+tz;
+  $("rSt").textContent=up?(el<12?"low sun":"daylight"):"sun below horizon";
+  $("tzNote").textContent=`Clock read as UTC${tz} (${$("tzmode").value==="auto"?"US daylight-saving rules for that year":"fixed by you"}). The opening setting is the camera time on Jim Gillogly\'s 1999-10-27 photos (clock accuracy unknown).`;
+  $("headingNote").textContent="Estimate: about 135-145° (front toward the south-east), from an on-site note and aerial imagery. Not surveyed.";
+  renderAnalysis(res);
+}
+function renderAnalysis(res){
+  const k=res.filter(r=>r.a.k4); const tb=$("k4Table").querySelector("tbody");
+  if(!k.length){$("anaSum").textContent=last&&last.el<=0?"The sun is below the horizon.":"Choose K4 or the cipher half to list K4 letters."; tb.innerHTML="";}
+  const cnt={lit:0,partly:0,blocked:0}; const surf={};
+  for(const r of k){cnt[r.state]=(cnt[r.state]||0)+1; if(r.land){const s=(r.land.via?r.land.via+" → ":"")+r.land.surf; surf[s]=(surf[s]||0)+1;}}
+  if(k.length)$("anaSum").innerHTML=`K4: <span class="pill ok">${cnt.lit} fully lit</span> <span class="pill warn">${cnt.partly} partly</span> <span class="pill bad">${cnt.blocked} in shade</span><br>Light from lit K4 letters lands on: ${Object.entries(surf).map(([s,n])=>`${s} ${n}`).join(", ")||"nothing"}.`;
+  tb.innerHTML=k.sort((a,b)=>a.a.k4idx-b.a.k4idx).map(r=>{
+    const st=r.state==="lit"?'<span class="pill ok">lit</span>':r.state==="partly"?'<span class="pill warn">partly</span>':'<span class="pill bad">shade</span>';
+    let to="—"; if(r.land){const L=r.land; const via=L.via?L.via+" → ":"";
+      if(L.surf==="copper")to=`${via}${L.face} copper, row ${L.cell.row} near “${L.cell.ch}”${L.cell.onLetter?" (on a cut letter)":""}`;
+      else if(L.surf==="ground")to=`${via}ground (${L.pt.x.toFixed(2)}, ${L.pt.z.toFixed(2)}) m`;
+      else to=via+L.surf+(L.surf==="bubbling pool"?" (image broken up)":"");}
+    return `<tr><td class="mono">${r.a.k4idx}</td><td class="mono">${r.a.ch}</td><td>${st}</td><td>${to}</td></tr>`;}).join("");
+  // reflection from the eye preset position
+  const eye=poolEye(); const rc=reflectionCheck(P,eye,res.length?res:traceAll(P,new THREE.Vector3(0,1,0),$("layout").value,"k4"));
+  $("reflSum").textContent=`From an eye 1.6 m up at the far edge of the calm pool (position is a placeholder), ${rc.vis} of ${rc.tot} K4 letters would be seen reflected in still water. Letters appear upside down; rows read bottom to top. The bubbling pool inside the screen breaks reflections up and is not treated as a mirror.`;
+}
+function poolEye(){return new THREE.Vector3(P.calmX,1.6,P.calmZ+P.calmR+0.3);}
+
+function sample(d){return d.lo+(d.hi-d.lo)*Math.random();}
+$("jitter").addEventListener("click",()=>{
+  if(!last||last.el<=0){$("jitterOut").textContent="The sun is below the horizon at this setting.";return;}
+  const base=traceAll(P,sunLocal(last.az,last.el,P.heading),$("layout").value,"k4");
+  const baseKey=new Map(base.map(r=>[r.a.k4idx,{k:landKey(r),pt:r.land&&r.land.pt}]));
+  const N=200, same=new Map(); const save={...P};
+  for(let n=0;n<N;n++){
+    const q={...save}; for(const k of ["H","y0","Rc","Rt","mTop","mBot","mSide","glyph","treeX","treeZ","treeR","treeH"])q[k]=sample(DIMS[k]);
+    q.heading=save.heading+sample(DIMS.heading); const mins=sample(DIMS.minutes);
+    let az=last.az,el=last.el; if(!$("manual").checked){const s=solar($("date").value,+$("hour").value+mins/60,last.tz);az=s.az;el=s.el;}
+    const mode=Math.random()<0.5?"justify":"pitch";
+    Object.assign(P,q); const rr=traceAll(P,sunLocal(az,el,q.heading),$("layout").value==="measured"?"measured":mode,"k4"); Object.assign(P,save);
+    for(const r of rr){const b=baseKey.get(r.a.k4idx); let ok=landKey(r)===b.k;
+      if(ok&&b.k==="ground")ok=r.land.pt.distanceTo(b.pt)<0.05; same.set(r.a.k4idx,(same.get(r.a.k4idx)||0)+(ok?1:0));}
+  }
+  apCache=null;
+  const stable=[...same.entries()].filter(([i,c])=>c/N>=0.9).map(([i])=>i);
+  const landed=base.filter(r=>r.land&&r.land.surf==="copper");
+  const stableCopper=landed.filter(r=>stable.includes(r.a.k4idx)).length;
+  $("jitterOut").innerHTML=`${stable.length} of 97 K4 letters keep the same result in ≥90% of 200 perturbed runs. Of the ${landed.length} that land on copper here, <b>${stableCopper}</b> hit the same cell in ≥90% of runs.${stableCopper<landed.length?" The rest are not trustworthy alignments.":""}`;
+});
+$("export").addEventListener("click",()=>{
+  const out={model:"Kryptos Sun Study, ray-traced v2",solar:last?{azimuthDeg:+last.az.toFixed(2),elevationDeg:+last.el.toFixed(2)}:null,settings:settings(),
+    validation:"not validated against any photograph",
+    k4:(last?last.res:[]).filter(r=>r.a.k4).sort((a,b)=>a.a.k4idx-b.a.k4idx).map(r=>({i:r.a.k4idx,letter:r.a.ch,sun:r.state,
+      lands:r.land?{surface:r.land.surf,via:r.land.via||null,point:r.land.pt?r.land.pt.toArray().map(x=>+x.toFixed(3)):null,cell:r.land.cell||null}:null}))};
+  const t=$("exportOut"); t.hidden=false; t.value=JSON.stringify(out,null,1);
+});
+$("copy").addEventListener("click",()=>{const t=$("exportOut"); if(t.hidden)$("export").click();
+  navigator.clipboard.writeText(t.value).then(()=>{$("copy").textContent="Copied";setTimeout(()=>$("copy").textContent="Copy",1500);}).catch(()=>{t.focus();t.select();});});
+$("apLoad").addEventListener("click",()=>{
+  try{const arr=JSON.parse($("apIn").value); measured={}; let n=0;
+    for(const a of arr){if(!["cipher","tableau"].includes(a.face)||typeof a.u!=="number"||typeof a.v!=="number")throw new Error("each entry needs face, row, i, u and v");
+      measured[a.face+"|"+a.row+"|"+a.i]={u:a.u,v:a.v}; n++;}
+    $("layout").value="measured"; apCache=null; buildSculpture(); update(); $("apMsg").textContent=`Using ${n} measured positions.`;
+  }catch(e){$("apMsg").textContent="Could not read the list: "+e.message;}
+});
+$("photo").addEventListener("change",e=>{const f=e.target.files[0]; if(!f)return; const rd=new FileReader();
+  rd.onload=()=>{const im=$("photoImg"); im.src=rd.result; im.hidden=false;}; rd.readAsDataURL(f);});
+$("photoClear").addEventListener("click",()=>{$("photoImg").hidden=true;});
+$("camApply").addEventListener("click",()=>{camera.fov=+$("camfov").value; camera.updateProjectionMatrix();
+  setView(+$("camx").value,+$("camy").value,+$("camz").value,0,1.8,0);});
+
+["date","hour","tzmode","heading","manual","az","el","decal","which","shadows","pools"].forEach(id=>$(id).addEventListener("input",update));
+["bulge","layout"].forEach(id=>$(id).addEventListener("input",()=>{apCache=null;buildSculpture();update();}));
+const setView=(x,y,z,tx,ty,tz)=>{const w=new THREE.Vector3(x,y,z).applyAxisAngle(new THREE.Vector3(0,1,0),rotY(P.heading));
+  const t=new THREE.Vector3(tx,ty,tz).applyAxisAngle(new THREE.Vector3(0,1,0),rotY(P.heading)); camera.position.copy(w); controls.target.copy(t); controls.update();};
+$("vFront").addEventListener("click",()=>setView(-1.2,1.6,6.5,-1.2,1.5,0));
+$("vBack").addEventListener("click",()=>setView(1.2,1.6,-6.5,1.2,1.5,0));
+$("vTop").addEventListener("click",()=>setView(0.01,16,0.01,0,0,0));
+$("vLow").addEventListener("click",()=>setView(6,1.6,6,0,0.2,0));
+$("vPool").addEventListener("click",()=>{const e=poolEye(); setView(e.x,e.y,e.z,0,0.8,0);});
+$("vReset").addEventListener("click",()=>setView(6,4,9,0,1.4,0));
+function resize(){const w=canvas.clientWidth||innerWidth,h=canvas.clientHeight||innerHeight;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();}
+addEventListener("resize",resize);
+fillDimTable(); buildSculpture(); resize(); setView(6,4,9,0,1.4,0); update();
+(function loop(){requestAnimationFrame(loop); controls.update(); renderer.render(scene,camera);})();
+})();
+</script>

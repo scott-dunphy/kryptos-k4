@@ -1,0 +1,10 @@
+planted truth ('AZ1', (5, 6), (1, 1), 11)
+planted recovered: True checks 13
+[REAL] configs 4320, consistent 0
+[REAL] consistent by period: {}
+[NULL0] configs 4320, consistent 0
+[NULL0] consistent by period: {}
+[NULL1] configs 4320, consistent 0
+[NULL1] consistent by period: {}
+[NULL2] configs 4320, consistent 0
+[NULL2] consistent by period: {}
