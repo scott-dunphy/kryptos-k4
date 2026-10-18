@@ -1,0 +1,52 @@
+S1 validation planted (17,42,5) found: True total syn hits 1
+S1 base60 chain L=2 rule=0 primers=3600 hits=0 0.0s
+S1 base60 chain L=2 rule=1 primers=3600 hits=0 0.0s
+S1 base60 chain L=3 rule=0 primers=216000 hits=0 0.1s
+S1 base60 chain L=3 rule=1 primers=216000 hits=0 0.1s
+S1 base60 chain L=4 rule=0 primers=12960000 hits=0 5.6s
+S1 base60 chain L=4 rule=1 primers=12960000 hits=0 7.2s
+S2 clock-time keys: streams=26265600 hits=0 15.3s
+S3 base6 k=2 chain L=2 keys=36 max crib matches=3/24
+S3 base6 k=2 chain L=3 keys=216 max crib matches=2/24
+S3 base6 k=2 chain L=4 keys=1296 max crib matches=4/24
+S3 base6 k=2 chain L=5 keys=7776 max crib matches=5/24
+S3 base7 k=2 chain L=2 keys=49 max crib matches=3/24
+S3 base7 k=2 chain L=3 keys=343 max crib matches=4/24
+S3 base7 k=2 chain L=4 keys=2401 max crib matches=4/24
+S3 base7 k=2 chain L=5 keys=16807 max crib matches=5/24
+S3 base8 k=2 chain L=2 keys=64 max crib matches=2/24
+S3 base8 k=2 chain L=3 keys=512 max crib matches=4/24
+S3 base8 k=2 chain L=4 keys=4096 max crib matches=3/24
+S3 base8 k=2 chain L=5 keys=32768 max crib matches=6/24
+S3 base9 k=2 chain L=2 keys=81 max crib matches=2/24
+S3 base9 k=2 chain L=3 keys=729 max crib matches=3/24
+S3 base9 k=2 chain L=4 keys=6561 max crib matches=3/24
+S3 base9 k=2 chain L=5 keys=59049 max crib matches=5/24
+S3 base10 k=2 chain L=2 keys=100 max crib matches=2/24
+S3 base10 k=2 chain L=3 keys=1000 max crib matches=3/24
+S3 base10 k=2 chain L=4 keys=10000 max crib matches=3/24
+S3 base10 k=2 chain L=5 keys=100000 max crib matches=4/24
+S3 base11 k=2 chain L=2 keys=121 max crib matches=2/24
+S3 base11 k=2 chain L=3 keys=1331 max crib matches=2/24
+S3 base11 k=2 chain L=4 keys=14641 max crib matches=3/24
+S3 base11 k=2 chain L=5 keys=161051 max crib matches=5/24
+S3 base12 k=2 chain L=2 keys=144 max crib matches=2/24
+S3 base12 k=2 chain L=3 keys=1728 max crib matches=2/24
+S3 base12 k=2 chain L=4 keys=20736 max crib matches=3/24
+S3 base12 k=2 chain L=5 keys=248832 max crib matches=4/24
+S3 base3 k=3 chain L=2 keys=9 max crib matches=2/24
+S3 base3 k=3 chain L=3 keys=27 max crib matches=4/24
+S3 base3 k=3 chain L=4 keys=81 max crib matches=4/24
+S3 base3 k=3 chain L=5 keys=243 max crib matches=5/24
+S3 base4 k=3 chain L=2 keys=16 max crib matches=2/24
+S3 base4 k=3 chain L=3 keys=64 max crib matches=2/24
+S3 base4 k=3 chain L=4 keys=256 max crib matches=3/24
+S3 base4 k=3 chain L=5 keys=1024 max crib matches=4/24
+S3 base5 k=3 chain L=2 keys=25 max crib matches=2/24
+S3 base5 k=3 chain L=3 keys=125 max crib matches=2/24
+S3 base5 k=3 chain L=4 keys=625 max crib matches=3/24
+S3 base5 k=3 chain L=5 keys=3125 max crib matches=3/24
+S3 base2 k=5 chain L=2 keys=4 max crib matches=2/24
+S3 base2 k=5 chain L=3 keys=8 max crib matches=2/24
+S3 base2 k=5 chain L=4 keys=16 max crib matches=3/24
+S3 base2 k=5 chain L=5 keys=32 max crib matches=3/24

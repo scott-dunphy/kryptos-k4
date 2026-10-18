@@ -1,0 +1,21 @@
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+*.png
+*.jpg
+*.jpeg
+
+# third-party images and raw downloads (not redistributed)
+data/web/
+data/carter/raw.html
+
+# large public-domain corpora (re-fetch from Project Gutenberg / archive.org; see README)
+data/kjv.txt
+data/mobydick.txt
+data/tut_smith.txt
+data/texts2/
+
+# bulky binary results
+results/*.npy
+results/anneal/*.npy

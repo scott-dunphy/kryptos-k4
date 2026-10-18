@@ -1,0 +1,2 @@
+REAL: KRYPTOS letters with |shift|<=2: 9 /10;  predecessor-function consistency (checks, conflicts>±1): {'predP': (2, 1), 'predC': (4, 4), 'sameC': (1, 1)}
+null P(KRYPTOS |shift|<=2 >= 9/10) = 0.0

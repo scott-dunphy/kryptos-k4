@@ -1,0 +1,51 @@
+{{versions
+ | title    = The Star-Spangled Banner
+ | author   = | override_author = [[Author:Francis Scott Key|Francis Scott Key]] (lyrics) and [[Author:John Stafford Smith|John Stafford Smith]] (music)
+ | section  = 
+ | previous = 
+ | next     = 
+ | year = 1814
+ | wikipedia=The Star-Spangled Banner
+ | commons=The Star-Spangled Banner
+ | commonscat=The Star-Spangled Banner
+ | wiktionary=Star-Spangled Banner
+ | portal = National anthems
+ | notes    = National anthem of the United States, by a Congressional resolution on March 3, 1931. It uses the words of the poem '''Defence of Fort McHenry''' by [[Author:Francis Scott Key|Francis Scott Key]], and is sung to the tune, attributed to [[Author:John Stafford Smith|John Stafford Smith]], of the popular English drinking song "[[To Anacreon in Heaven]]."
+
+{{media|type = music}} sound recordings available from [[commons:Category:The Star-Spangled Banner|media (category)]]
+}}
+<div style="display:none">
+<section begin="first line"/>O! say can you see by the dawn's early light<section end="first line"/>
+<section begin="lyrics"/>Francis Scott Key<section end="lyrics"/>
+<section begin="composer"/>Fred Waring<section end="composer"/>
+<section begin="image"/>Defence of Fort M'Henry broadside.jpg<section end="image"/>
+<section begin="audio"/>Star-spangled banner.ogg<section end="audio"/>
+</div>
+
+* "[[Defence of Fort McHenry (broadside)|Defence of Fort McHenry]]", broadside, 1814 (lyrics only).
+*"[[The Riverside song book/The Star-Spangled Banner|The Star-Spangled Banner]]" in ''[[The Riverside song book]]'' (1893)
+*"[[Suggestive programs for special day exercises/Our Nations Birthday/The Star Spangled Banner|The Star Spangled Banner]]" in ''[[Suggestive programs for special day exercises]]'', 1898 (lyrics only)
+*"[[School Song Knapsack/Star Spangled Banner|Star Spangled Banner]]" in ''[[School Song Knapsack]]'', 1899 (lyrics only)
+* "[[Songs of Long Ago/Star-Spangled Banner|Star-Spangled Banner]]" in ''[[Songs of Long Ago]]'', 1903.
+* "[[Poems That Every Child Should Know/The Star-Spangled Banner|The Star-Spangled Banner]]" in ''[[Poems That Every Child Should Know]]'', 1904 (lyrics only)
+* "[[The Canadian Soldiers' Song Book/The Star-Spangled Banner|The Star-Spangled Banner]]" in ''[[The Canadian Soldiers' Song Book]]'', 1916 (lyrics only)
+* "[[Southern Life in Southern Literature/Francis Scott Key|The Star-Spangled Banner]]" in ''[[Southern Life in Southern Literature]]'', 1917 (lyrics only).
+* "[[The Army and Navy Hymnal/Hymns/O Say Can You See|O Say Can You See]]" in ''[[The Army and Navy Hymnal]]'', 1920.
+
+
+{{DEFAULTSORT:Star-Spangled Banner, The}}
+{{PD-old}}
+{{authority control}}
+[[Category:American patriotic songs]]
+[[Category:American poetry]]
+[[Category:National anthems]]
+[[Category:United States Navy]]
+[[es:Himno Nacional de Estados Unidos]]
+[[fi:Tähtiviiri]]
+[[he:הדגל זרוע הכוכבים]]
+[[id:The Star-Spangled Banner]]
+[[ja:星条旗]]
+[[nl:The Star-Spangled Banner]]
+[[pt:The Star-Spangled Banner]]
+[[ru:Гимн США]]
+[[tr:Amerika Birleşik Devletleri Ulusal Marşı]]

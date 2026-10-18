@@ -1,0 +1,8 @@
+row25 EASTNORTHEAST (13) vs tableau(right): best run / best count = (4, 6)
+row25 EASTNORTHEAST (13) vs cipher(left): best run / best count = (4, 6)
+row25 EASTNORTHEAST (13) NULL random grids: [(5, 6), (4, 7), (5, 6), (5, 6), (5, 6)]
+row25 EASTNORTHEAST (13) NULL shuffled CT vs tableau: (4, 6)
+row27 LINCLOCK (8) vs tableau(right): best run / best count = (4, 6)
+row27 LINCLOCK (8) vs cipher(left): best run / best count = (4, 5)
+row27 LINCLOCK (8) NULL random grids: [(4, 5), (5, 5), (4, 5), (5, 5), (4, 5)]
+row27 LINCLOCK (8) NULL shuffled CT vs tableau: (3, 4)

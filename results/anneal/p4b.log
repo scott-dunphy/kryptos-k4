@@ -1,0 +1,44 @@
+p= 8 REAL  clean=7/8 bestq=-5.02 bestw=-2.768 conv=0.15 maxpair=0.25 66s
+p= 8 NULL0 clean=0/8 bestq=None bestw=None conv=0.00 maxpair=0.00 50s
+p= 8 NULL1 clean=0/8 bestq=None bestw=None conv=0.00 maxpair=0.00 24s
+p= 8 NULL2 clean=0/8 bestq=None bestw=None conv=0.00 maxpair=0.00 32s
+p=10 REAL  clean=0/8 bestq=None bestw=None conv=0.00 maxpair=0.00 28s
+p=10 NULL0 clean=0/8 bestq=None bestw=None conv=0.00 maxpair=0.00 25s
+p=10 NULL1 clean=0/8 bestq=None bestw=None conv=0.00 maxpair=0.00 23s
+p=10 NULL2 clean=8/8 bestq=-5.147 bestw=-2.471 conv=0.15 maxpair=0.25 26s
+p=13 REAL  clean=8/8 bestq=-5.049 bestw=-2.319 conv=0.13 maxpair=0.18 30s
+p=13 NULL0 clean=0/8 bestq=None bestw=None conv=0.00 maxpair=0.00 32s
+p=13 NULL1 clean=0/8 bestq=None bestw=None conv=0.00 maxpair=0.00 33s
+p=13 NULL2 clean=8/8 bestq=-5.039 bestw=-2.408 conv=0.10 maxpair=0.16 23s
+p=16 REAL  clean=8/8 bestq=-4.825 bestw=-2.066 conv=0.13 maxpair=0.16 18s
+p=16 NULL0 clean=8/8 bestq=-4.841 bestw=-2.328 conv=0.13 maxpair=0.18 16s
+p=16 NULL1 clean=8/8 bestq=-4.853 bestw=-2.316 conv=0.13 maxpair=0.19 23s
+p=16 NULL2 clean=0/8 bestq=None bestw=None conv=0.00 maxpair=0.00 22s
+p=19 REAL  clean=8/8 bestq=-4.7 bestw=-2.169 conv=0.07 maxpair=0.16 17s
+p=19 NULL0 clean=0/8 bestq=None bestw=None conv=0.00 maxpair=0.00 19s
+p=19 NULL1 clean=0/8 bestq=None bestw=None conv=0.00 maxpair=0.00 18s
+p=19 NULL2 clean=0/8 bestq=None bestw=None conv=0.00 maxpair=0.00 30s
+p=20 REAL  clean=8/8 bestq=-4.649 bestw=-2.136 conv=0.12 maxpair=0.23 37s
+p=20 NULL0 clean=0/8 bestq=None bestw=None conv=0.00 maxpair=0.00 34s
+p=20 NULL1 clean=8/8 bestq=-4.66 bestw=-2.028 conv=0.10 maxpair=0.18 30s
+p=20 NULL2 clean=8/8 bestq=-4.645 bestw=-2.404 conv=0.09 maxpair=0.16 25s
+p=23 REAL  clean=8/8 bestq=-4.664 bestw=-2.025 conv=0.07 maxpair=0.18 26s
+p=23 NULL0 clean=8/8 bestq=-4.566 bestw=-2.123 conv=0.15 maxpair=0.22 21s
+p=23 NULL1 clean=8/8 bestq=-4.59 bestw=-1.817 conv=0.06 maxpair=0.14 26s
+p=23 NULL2 clean=8/8 bestq=-4.546 bestw=-2.03 conv=0.09 maxpair=0.19 26s
+p=24 REAL  clean=8/8 bestq=-4.608 bestw=-2.238 conv=0.08 maxpair=0.21 30s
+p=24 NULL0 clean=8/8 bestq=-4.572 bestw=-2.104 conv=0.09 maxpair=0.18 41s
+p=24 NULL1 clean=8/8 bestq=-4.506 bestw=-1.996 conv=0.13 maxpair=0.21 39s
+p=24 NULL2 clean=8/8 bestq=-4.627 bestw=-2.071 conv=0.10 maxpair=0.15 28s
+p=26 REAL  clean=8/8 bestq=-4.635 bestw=-2.269 conv=0.05 maxpair=0.19 23s
+p=26 NULL0 clean=8/8 bestq=-4.667 bestw=-2.336 conv=0.07 maxpair=0.12 27s
+p=26 NULL1 clean=8/8 bestq=-4.746 bestw=-2.407 conv=0.10 maxpair=0.16 35s
+p=26 NULL2 clean=8/8 bestq=-4.678 bestw=-2.019 conv=0.04 maxpair=0.11 34s
+p=29 REAL  clean=8/8 bestq=-4.545 bestw=-1.822 conv=0.09 maxpair=0.19 34s
+p=29 NULL0 clean=8/8 bestq=-4.56 bestw=-2.003 conv=0.08 maxpair=0.16 28s
+p=29 NULL1 clean=8/8 bestq=-4.529 bestw=-2.02 conv=0.11 maxpair=0.22 32s
+p=29 NULL2 clean=8/8 bestq=-4.616 bestw=-2.043 conv=0.09 maxpair=0.15 26s
+p=30 REAL  clean=8/8 bestq=-4.416 bestw=-1.872 conv=0.09 maxpair=0.14 30s
+p=30 NULL0 clean=8/8 bestq=-4.58 bestw=-2.044 conv=0.10 maxpair=0.19 37s
+p=30 NULL1 clean=8/8 bestq=-4.512 bestw=-2.089 conv=0.08 maxpair=0.15 50s
+p=30 NULL2 clean=8/8 bestq=-4.421 bestw=-1.887 conv=0.11 maxpair=0.19 61s

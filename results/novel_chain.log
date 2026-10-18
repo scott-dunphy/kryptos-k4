@@ -1,0 +1,27 @@
+REAL lags (1,) tried 8427 hits 0 min d13 checks 18
+REAL lags (2,) tried 8427 hits 0 min d13 checks 16
+REAL lags (3,) tried 8427 hits 0 min d13 checks 14
+REAL lags (4,) tried 8427 hits 0 min d13 checks 12
+REAL lags (5,) tried 8427 hits 0 min d13 checks 10
+REAL lags (7,) tried 8427 hits 0 min d13 checks 6
+REAL lags (1, 2) tried 8427 hits 0 min d13 checks 14
+REAL lags (1, 3) tried 8427 hits 0 min d13 checks 12
+REAL lags (2, 3) tried 8427 hits 0 min d13 checks 12
+shuf0 lags (1,) tried 8427 hits 0 min d13 checks 18
+shuf0 lags (2,) tried 8427 hits 0 min d13 checks 16
+shuf0 lags (3,) tried 8427 hits 0 min d13 checks 14
+shuf0 lags (4,) tried 8427 hits 0 min d13 checks 12
+shuf0 lags (5,) tried 8427 hits 0 min d13 checks 10
+shuf0 lags (7,) tried 8427 hits 0 min d13 checks 6
+shuf0 lags (1, 2) tried 8427 hits 0 min d13 checks 14
+shuf0 lags (1, 3) tried 8427 hits 0 min d13 checks 12
+shuf0 lags (2, 3) tried 8427 hits 0 min d13 checks 12
+shuf1 lags (1,) tried 8427 hits 0 min d13 checks 18
+shuf1 lags (2,) tried 8427 hits 0 min d13 checks 16
+shuf1 lags (3,) tried 8427 hits 0 min d13 checks 14
+shuf1 lags (4,) tried 8427 hits 0 min d13 checks 12
+shuf1 lags (5,) tried 8427 hits 0 min d13 checks 10
+shuf1 lags (7,) tried 8427 hits 0 min d13 checks 6
+shuf1 lags (1, 2) tried 8427 hits 0 min d13 checks 14
+shuf1 lags (1, 3) tried 8427 hits 0 min d13 checks 12
+shuf1 lags (2, 3) tried 8427 hits 0 min d13 checks 12

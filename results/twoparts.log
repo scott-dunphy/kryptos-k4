@@ -1,0 +1,5 @@
+T3 two-part periodic: partitions where EVERY part has a consistent setting (>=4 checks): []
+T3 null (20 shuffled CTs) count of such partitions: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+T2 M1 letter-class w=2: real failures 2; null P(fail<=real)=0.0000 (null mean 11.25)
+T2 M1 letter-class w=3: real failures 2; null P(fail<=real)=0.0000 (null mean 9.72)
+T2 M1 letter-class w=4: real failures 1; null P(fail<=real)=0.0001 (null mean 8.13)

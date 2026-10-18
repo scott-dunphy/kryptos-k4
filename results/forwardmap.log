@@ -1,0 +1,4 @@
+structured alphabets incl rotations/reversals: 13312
+#2 forward-map flags (range<=12 or <=6 distinct): 0
+  null random permutations flags: 0 / 40000
+#4 date keys p=8: 720 keys; single-alphabet hits 0; dual-alphabet hits 0 (expected chance ~0.29) []

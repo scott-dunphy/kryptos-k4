@@ -1,0 +1,7 @@
+w=±2: exempt 1 positions -> sets giving 24/24 fit: 0 of 24 []
+w=±2: exempt 2 positions -> sets giving 24/24 fit: 1 of 276 [(64, 71)]
+w=±2: exempt 3 positions -> sets giving 24/24 fit: 23 of 2024 [(21, 30, 71), (21, 64, 71), (22, 64, 71), (23, 64, 71), (24, 64, 71), (25, 64, 71), (26, 64, 71), (27, 64, 71), (28, 64, 71), (29, 64, 71), (30, 64, 71), (31, 64, 71)]
+w=±3: exempt 1 positions -> sets giving 24/24 fit: 0 of 24 []
+w=±3: exempt 2 positions -> sets giving 24/24 fit: 1 of 276 [(64, 71)]
+w=±3: exempt 3 positions -> sets giving 24/24 fit: 23 of 2024 [(21, 30, 71), (21, 64, 71), (22, 64, 71), (23, 64, 71), (24, 64, 71), (25, 64, 71), (26, 64, 71), (27, 64, 71), (28, 64, 71), (29, 64, 71), (30, 64, 71), (31, 64, 71)]
+null: shuffled CT reaching 24/24 with some 2-position exemption (w=3): 0/2000

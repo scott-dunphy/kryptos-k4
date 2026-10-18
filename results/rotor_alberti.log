@@ -1,0 +1,9 @@
+T1 validation hits 1 truth True
+T1 REAL rotor hits 0 []
+T1 null (20 random CT) hits: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+T2a REAL (unknown alphabet, <=1 change/run) hits 0 1 s
+T2a null hits 0
+T2a validation hits 2280 at change points [[6, 0], [6, 1], [6, 2], [6, 3], [6, 4]]
+T2b PT=base min max-changes-per-run 8 count<=2: 0 count<=4: 0
+T2b CT=base min max-changes-per-run 7 count<=2: 0 count<=4: 0
+T2b NULL random alphabets: min 7 count<=2: 0 count<=4: 0

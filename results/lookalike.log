@@ -1,0 +1,22 @@
+greek_modern    CT         survivors m>=4: 0
+greek_modern    CT+cribPT  survivors m>=4: 2
+    [43411, 23, 0, 3, 4]
+    [43411, 23, 0, 11, 4]
+greek_classic   CT         survivors m>=4: 0
+greek_classic   CT+cribPT  survivors m>=4: 2
+    [43411, 23, 0, 3, 4]
+    [43411, 23, 0, 11, 4]
+greek_classic2  CT         survivors m>=4: 0
+greek_classic2  CT+cribPT  survivors m>=4: 0
+cyrillic        CT         survivors m>=4: 0
+cyrillic        CT+cribPT  survivors m>=4: 2
+    [43411, 23, 0, 3, 4]
+    [43411, 23, 0, 11, 4]
+cyrillic_kh     CT         survivors m>=4: 0
+cyrillic_kh     CT+cribPT  survivors m>=4: 2
+    [43411, 23, 0, 3, 4]
+    [43411, 23, 0, 11, 4]
+swap_PR_HN_BV   CT         survivors m>=4: 0
+swap_PR_HN_BV   CT+cribPT  survivors m>=4: 0
+swap_cyr_full   CT         survivors m>=4: 0
+swap_cyr_full   CT+cribPT  survivors m>=4: 0

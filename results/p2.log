@@ -1,0 +1,3 @@
+PT=base,CT=dict hits 0 102.3 s
+PT=dict,CT=base hits 0 109.7 s
+PT=base,CT=base hits 0 0.0 s

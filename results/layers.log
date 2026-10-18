@@ -1,0 +1,6 @@
+text lengths {'K0': 81, 'K1PT': 63, 'K2PT': 370, 'K3PT': 336, 'K1CT': 63, 'K2CT': 370, 'K3CT': 336, 'LEFT': 768, 'RIGHT': 867}
+VALIDATION PAIR hit K1PT K3CT 1 KA 1
+VALIDATION PAIR hit K1PT LEFT 1 KA 1
+VALIDATION total hits 2
+REAL total hits 0
+NULL total hits 0

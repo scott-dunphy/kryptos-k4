@@ -1,0 +1,21 @@
+key vectors 33708
+3key 1,5,18 d2=3 d13=3 hits=6 exp=1.92 emp_exp=1.35 [('TIME', 'TOMB', 'vig'), ('TIME', 'TOMB', 'var'), ('TIME', 'TOMB~rev', 'beau'), ('TIME~rev', 'TOMB', 'beau')]
+3key 2,5,18 d2=3 d13=3 hits=6 exp=1.92 emp_exp=1.35 [('TIME', 'TOMB', 'vig'), ('TIME', 'TOMB', 'var'), ('TIME', 'TOMB~rev', 'beau'), ('TIME~rev', 'TOMB', 'beau')]
+3key 2,7,13 d2=4 d13=4 hits=6 exp=0.0738 emp_exp=0 [('EGYPT', 'WELTZEITUHR', 'beau'), ('EGYPT', 'WELTZEITUHR~rev', 'vig'), ('EGYPT', 'WELTZEITUHR~rev', 'var'), ('EGYPT~rev', 'WELTZEITUHR', 'vig')]
+PART1 informative models 286, total hits 18, total expected 21.4
+part2 models 120
+kw KRYPTOS KA s=1 o=0 free(10, 11) d2=4 d13=4 hits=3 exp=0.0738 [('COMPASS', 'CAIRO', 'var'), ('COMPASS', 'CAIRO~rev', 'beau'), ('COMPASS~rev', 'CAIRO~rev', 'vig')]
+kw KRYPTOS KA s=-1 o=0 free(10, 11) d2=4 d13=4 hits=3 exp=0.0738 [('COMPASS', 'CAIRO', 'vig'), ('COMPASS~rev', 'CAIRO', 'beau'), ('COMPASS~rev', 'CAIRO~rev', 'var')]
+kw PALIMPSEST KA s=1 o=9 free(8, 13) d2=4 d13=4 hits=3 exp=0.0738 [('WEST', 'SEVEN', 'vig'), ('WEST~rev', 'SEVEN', 'beau'), ('WEST~rev', 'SEVEN~rev', 'var')]
+kw PALIMPSEST KA s=-1 o=9 free(8, 13) d2=4 d13=4 hits=3 exp=0.0738 [('WEST', 'SEVEN', 'var'), ('WEST', 'SEVEN~rev', 'beau'), ('WEST~rev', 'SEVEN~rev', 'vig')]
+kw ABSCISSA AZ s=1 o=6 free(10, 11) d2=4 d13=4 hits=3 exp=0.0738 [('LAYERTWO', 'UHR~rev', 'vig'), ('LAYERTWO~rev', 'UHR', 'var'), ('LAYERTWO~rev', 'UHR~rev', 'beau')]
+kw ABSCISSA AZ s=-1 o=6 free(10, 11) d2=4 d13=4 hits=3 exp=0.0738 [('LAYERTWO', 'UHR', 'beau'), ('LAYERTWO', 'UHR~rev', 'var'), ('LAYERTWO~rev', 'UHR', 'vig')]
+kw ABSCISSA KA s=1 o=6 free(10, 11) d2=4 d13=4 hits=3 exp=0.0738 [('WEBSTER', 'ILLUSION~rev', 'vig'), ('WEBSTER~rev', 'ILLUSION', 'var'), ('WEBSTER~rev', 'ILLUSION~rev', 'beau')]
+kw ABSCISSA KA s=-1 o=6 free(10, 11) d2=4 d13=4 hits=3 exp=0.0738 [('WEBSTER', 'ILLUSION', 'beau'), ('WEBSTER', 'ILLUSION~rev', 'var'), ('WEBSTER~rev', 'ILLUSION', 'vig')]
+kw BERLIN KA s=1 o=3 free(5, 16) d2=4 d13=4 hits=3 exp=0.0738 [('ABSCISSA', 'SCHEIDT~rev', 'vig'), ('ABSCISSA~rev', 'SCHEIDT', 'var'), ('ABSCISSA~rev', 'SCHEIDT~rev', 'beau')]
+kw BERLIN KA s=-1 o=3 free(5, 16) d2=4 d13=4 hits=3 exp=0.0738 [('ABSCISSA', 'SCHEIDT', 'beau'), ('ABSCISSA', 'SCHEIDT~rev', 'var'), ('ABSCISSA~rev', 'SCHEIDT', 'vig')]
+kw CLOCK KA s=1 o=4 free(4, 17) d2=4 d13=4 hits=3 exp=0.0738 [('MENGENLEHREUHR', 'WORLDCLOCK', 'beau'), ('MENGENLEHREUHR', 'WORLDCLOCK~rev', 'var'), ('MENGENLEHREUHR~rev', 'WORLDCLOCK', 'vig')]
+kw CLOCK KA s=-1 o=4 free(4, 17) d2=4 d13=4 hits=3 exp=0.0738 [('MENGENLEHREUHR', 'WORLDCLOCK~rev', 'vig'), ('MENGENLEHREUHR~rev', 'WORLDCLOCK', 'var'), ('MENGENLEHREUHR~rev', 'WORLDCLOCK~rev', 'beau')]
+kw SHADOW AZ s=1 o=4 free(4, 17) d2=4 d13=4 hits=3 exp=0.0738 [('POINT', 'WELTZEITUHR', 'beau'), ('POINT', 'WELTZEITUHR~rev', 'var'), ('POINT~rev', 'WELTZEITUHR', 'vig')]
+kw SHADOW AZ s=-1 o=4 free(4, 17) d2=4 d13=4 hits=3 exp=0.0738 [('POINT', 'WELTZEITUHR~rev', 'vig'), ('POINT~rev', 'WELTZEITUHR', 'var'), ('POINT~rev', 'WELTZEITUHR~rev', 'beau')]
+PART2 keyword variants 200 x models 120: total hits 42, total expected 60.9

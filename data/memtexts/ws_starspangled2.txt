@@ -1,0 +1,14 @@
+{{other versions|The Star-Spangled Banner}}
+{{header
+ | title      = [[../]]
+ | author     = | contributor= Francis Scott Key
+ | section    = The Star-Spangled Banner
+ | previous   = [[../Hail Columbia|Hail Columbia]]
+ | next       = [[../The Red White and Blue|The Red White and Blue]]
+ | notes      = 
+ | section-composer = Samuel Arnold
+}}
+
+
+{{default layout|Layout 2}}
+{{#tag:pages||index=The Riverside song book.djvu|include=38,39}}

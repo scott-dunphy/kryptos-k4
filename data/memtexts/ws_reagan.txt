@@ -1,0 +1,19 @@
+
+{{header
+ | title     = Berlin Wall Speech
+ | author    = Ronald Reagan
+ | section   = 
+ | previous  = 
+ | next      = 
+ | year      = 1987
+ | portal    = Speeches
+ | notes     = Delivered on 12 June 1987 at the [[w:Brandenburg Gate|Brandenburg Gate]].
+}}
+
+<pages index="Ronald Reagan's Berlin Wall Speech.pdf" from=2 to=13 />
+
+{{PD-USGov}}
+[[Category:American speeches]]
+
+[[ko:로널드 레이건의 베를린 장벽 연설]]
+[[cs:Strhněte tu zeď!]]

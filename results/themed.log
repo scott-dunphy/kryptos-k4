@@ -1,0 +1,13 @@
+themed alphabets 256 x dict 395990
+PT=themed flagged 204 strong 0 min range 13 min distinct 8
+CT=themed flagged 924 strong 60 min range 11 min distinct 7
+   BECKONER DISCOVERY [0, 12, 12, 27]
+   BECKONER DISCOVERY [2, 12, 12, 27]
+   BECKONER DISCOVERY~rev [1, 12, 12, 27]
+   BECKONER~rev DISCOVERY [1, 12, 12, 27]
+   BECKONER~rev DISCOVERY~rev [0, 12, 12, 27]
+   BECKONER~rev DISCOVERY~rev [2, 12, 12, 27]
+   EKABORON DISCOVERY [0, 11, 11, 27]
+   EKABORON DISCOVERY [2, 11, 11, 27]
+   EKABORON DISCOVERY~rev [1, 11, 11, 27]
+   EKABORON~rev DISCOVERY [1, 11, 11, 27]

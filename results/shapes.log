@@ -1,0 +1,4 @@
+VALIDATION: paths tested 161942, hits 24 [('star24/7 lines c=(6,23) R=9', 1), ('star24/7 lines c=(7,22) R=9', 1), ('star24/7 lines c=(8,21) R=9', 1), ('star24/7 lines c=(9,20) R=9', 1), ('star24/7 lines c=(10,17) R=9', 1), ('star24/7 lines c=(10,19) R=9', 1), ('star24/7 lines c=(11,16) R=9', 1), ('star24/7 lines c=(11,18) R=9', 1), ('star24/7 lines c=(12,15) R=9', 1), ('star24/7 lines c=(12,17) R=9', 1)]
+validation truth found: True
+REAL: paths tested 161942, hits 0 []
+NULL shuffled: paths tested 161942, hits 0 []

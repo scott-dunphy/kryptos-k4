@@ -1,0 +1,19 @@
+base routes 2880 pairs 8294400
+progress 0 2880 5 s
+progress 200 2880 15 s
+HIT [('W6ecolS', 'W8scolCS^-1', 24, 1, 7, 5)]
+HIT [('W6ecolCS', 'W8scolS^-1', 24, 1, 7, 5)]
+progress 400 2880 24 s
+progress 600 2880 34 s
+progress 800 2880 44 s
+progress 1000 2880 55 s
+progress 1200 2880 67 s
+progress 1400 2880 76 s
+progress 1600 2880 87 s
+progress 1800 2880 97 s
+progress 2000 2880 108 s
+progress 2200 2880 119 s
+progress 2400 2880 131 s
+progress 2600 2880 141 s
+progress 2800 2880 152 s
+done; survivors 2 156 s

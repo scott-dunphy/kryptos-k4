@@ -1,0 +1,9 @@
+perms 138778 variants 765
+chunk 0 survivors 0 75 s
+chunk 20000 survivors 0 125 s
+chunk 40000 survivors 0 200 s
+chunk 60000 survivors 0 276 s
+chunk 80000 survivors 0 361 s
+chunk 100000 survivors 0 403 s
+chunk 120000 survivors 0 447 s
+total m>=5 0 []

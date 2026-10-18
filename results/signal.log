@@ -1,0 +1,22 @@
+T1 per-statistic p (real value):
+   mod26w2                real=11     p=0.0039
+   mod26w3                real=12     p=0.0173
+   mod13w2                real=16     p=0.0042
+   mod13w3                real=20     p=0.0025
+   mod12w2                real=19     p=0.0005
+   mod12w3                real=20     p=0.0154
+   mod11w2                real=17     p=0.0190
+   mod11w3                real=21     p=0.0277
+   two-offset seg         real=16     p=0.0088
+   two-offset AM          real=17     p=0.0010
+   two-offset KRY         real=17     p=0.0016
+   two-offset row25       real=16     p=0.0088
+   two-offset par         real=12     p=0.5840
+   two-offset vow         real=12     p=0.5564
+   chi2_3bin              real=9.010714285714284 p=0.0112
+T1 family-corrected: real min-p 0.0005; fraction of null with min-p <= that: 0.0029
+T2 uniform26       IC mean 0.0385  2.5%=0.0339  P(IC<=0.0361)=0.2122
+T2 small_all       IC mean 0.0406  2.5%=0.0350  P(IC<=0.0361)=0.0726
+T2 observed_mix    IC mean 0.0390  2.5%=0.0341  P(IC<=0.0361)=0.1658
+T2 small_half_seg  IC mean 0.0389  2.5%=0.0339  P(IC<=0.0361)=0.1658
+K4 IC 0.0361

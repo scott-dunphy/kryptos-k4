@@ -1,0 +1,6 @@
+model A eqs 28 base/dict hits 0 7.6 s
+model A eqs 28 dict/base hits 0 4.5 s
+model B eqs 16 base/dict hits 0 4.4 s
+model B eqs 16 dict/base hits 0 4.3 s
+model C eqs 16 base/dict hits 0 4.8 s
+model C eqs 16 dict/base hits 0 4.4 s

@@ -1,0 +1,6 @@
+REAL: A(key=CT[f(i)]) hits 0 [] | B(key=PT[f(i)]) testable maps 5969, hits 0 []
+NULL0: A(key=CT[f(i)]) hits 0 [] | B(key=PT[f(i)]) testable maps 5969, hits 0 []
+NULL1: A(key=CT[f(i)]) hits 0 [] | B(key=PT[f(i)]) testable maps 5969, hits 0 []
+NULL2: A(key=CT[f(i)]) hits 0 [] | B(key=PT[f(i)]) testable maps 5969, hits 0 []
+validation B (key = PT[5i+11], KA vig):
+VAL: A(key=CT[f(i)]) hits 0 [] | B(key=PT[f(i)]) testable maps 5969, hits 1 [('affine a=5 b=11', 7, 6)]

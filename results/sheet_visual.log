@@ -1,0 +1,5 @@
+(1) KRYPTOS mask + per-row keyword: 0 hits
+(2) key = distance to prev/next KRYPTOS letter: 0 hits
+(3) column key + row drift (sheet): consistent (variant,d) combos: 0 of 156 (chance ~156*2/26^2 ≈ 0.5)
+(3) column key + row drift (copper): consistent (variant,d) combos: 0 of 156 (chance ~156*2/26^2 ≈ 0.5)
+(4) diagonal/vertical neighbour keys (lags 30,32,33; PT or CT): 0 hits (PT lags have only 2 checks)

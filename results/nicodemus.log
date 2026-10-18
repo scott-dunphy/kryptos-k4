@@ -1,0 +1,16 @@
+B 5 done W2-9 all orders 4 s
+B 4 done W2-9 all orders 8 s
+B 6 done W2-9 all orders 11 s
+B 3 done W2-9 all orders 15 s
+B 999 done W2-9 all orders 18 s
+keywords W 10 B 5 orders 29419 survivors 0
+keywords W 10 B 999 orders 29419 survivors 0
+keywords W 11 B 5 orders 25451 survivors 0
+keywords W 11 B 999 orders 25451 survivors 0
+keywords W 12 B 5 orders 20206 survivors 0
+keywords W 12 B 999 orders 20206 survivors 0
+keywords W 13 B 5 orders 14818 survivors 0
+keywords W 13 B 999 orders 14818 survivors 0
+keywords W 14 B 5 orders 9726 survivors 0
+keywords W 14 B 999 orders 9726 survivors 0
+TOTAL survivors by order (1 = true Nicodemus order): {0: 0, 1: 0} 20 s

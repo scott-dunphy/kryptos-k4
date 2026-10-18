@@ -1,0 +1,21 @@
+{{other versions|The Star-Spangled Banner}}
+{{header
+ | title      = Defence of Fort McHenry
+ | author     = Francis Scott Key
+ | year       = 1814
+ | translator = 
+ | section    = 
+ | previous   = 
+ | next       = 
+ | notes      = This poem is used as the lyrics of the American national anthem "[[The Star-Spangled Banner]]".
+ | portal = American literature
+}}
+
+<div class=indented-page>
+<pages index="Defence of Fort M'Henry broadside.jpg" from="Defence of Fort M'Henry broadside.jpg" to="Defence of Fort M'Henry broadside.jpg" />
+</div>
+
+{{authority control}}
+{{PD-old}}
+[[Category:Broadsides]]
+[[Category:American poetry]]

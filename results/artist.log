@@ -1,0 +1,12 @@
+KSET [0, 1, 2, 3, 4] sigmas 708
+  H1        real best 11/24 (11/22 excl 64,71) ('H1', 'AZ', 'AZ', 24)  | null excl-best mean 10.0 max 12  P(null>=real)=0.275
+  H2        real best 11/24 (11/22 excl 64,71) ('H2', 26, 'AZ', 6, -1)  | null excl-best mean 7.4 max 12  P(null>=real)=0.050
+  H3        real best 10/24 (10/22 excl 64,71) ('H3', 'AZ', 8)  | null excl-best mean 6.8 max 12  P(null>=real)=0.050
+  H3full    real best 12/24 (12/22 excl 64,71) ('H3full', 10)  | null excl-best mean 7.0 max 13  P(null>=real)=0.025
+  H1perrow  real best 16/24 (15/22 excl 64,71) ('AZ', 'AZ')  | null excl-best mean 12.3 max 15  P(null>=real)=0.050
+KSET [0, 1, 2, 24, 25] sigmas 708
+  H1        real best 11/24 (11/22 excl 64,71) ('H1', 'AZ', 'AZ', 0)  | null excl-best mean 9.6 max 12  P(null>=real)=0.125
+  H2        real best 15/24 (15/22 excl 64,71) ('H2', 26, 'AZ', 8, -1)  | null excl-best mean 7.2 max 11  P(null>=real)=0.000
+  H3        real best 15/24 (15/22 excl 64,71) ('H3', 'AZ', 10)  | null excl-best mean 6.9 max 11  P(null>=real)=0.000
+  H3full    real best 17/24 (17/22 excl 64,71) ('H3full', 12)  | null excl-best mean 7.2 max 10  P(null>=real)=0.000
+  H1perrow  real best 16/24 (15/22 excl 64,71) ('AZ', 'AZ')  | null excl-best mean 12.1 max 14  P(null>=real)=0.000

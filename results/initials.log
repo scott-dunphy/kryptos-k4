@@ -1,0 +1,28 @@
+Carter lines: 10404
+carter1923:word_first        len=  63268 fixed-alphabet best=10/24  single-unknown-alphabet hits=0
+carter1923:word_last         len=  63268 fixed-alphabet best=10/24  single-unknown-alphabet hits=0
+carter1923:sent_first        len=   2371 fixed-alphabet best=8/24  single-unknown-alphabet hits=0
+carter1923:para_first        len=   1365 fixed-alphabet best=10/24  single-unknown-alphabet hits=0
+carter1923:line_first        len=   7917 fixed-alphabet best=9/24  single-unknown-alphabet hits=0
+carter1923:line_last         len=   7917 fixed-alphabet best=9/24  single-unknown-alphabet hits=0
+tut_smith.txt:word_first     len=  24880 fixed-alphabet best=9/24  single-unknown-alphabet hits=0
+tut_smith.txt:word_last      len=  24880 fixed-alphabet best=10/24  single-unknown-alphabet hits=0
+tut_smith.txt:sent_first     len=   1042 fixed-alphabet best=8/24  single-unknown-alphabet hits=0
+tut_smith.txt:para_first     len=    351 fixed-alphabet best=7/24  single-unknown-alphabet hits=0
+tut_smith.txt:line_first     len=   2308 fixed-alphabet best=9/24  single-unknown-alphabet hits=0
+tut_smith.txt:line_last      len=   2308 fixed-alphabet best=8/24  single-unknown-alphabet hits=0
+kjv.txt:word_first           len= 795234 fixed-alphabet best=11/24  single-unknown-alphabet hits=0
+kjv.txt:word_last            len= 795234 fixed-alphabet best=11/24  single-unknown-alphabet hits=0
+kjv.txt:sent_first           len=  29995 fixed-alphabet best=9/24  single-unknown-alphabet hits=0
+kjv.txt:para_first           len=  24666 fixed-alphabet best=10/24  single-unknown-alphabet hits=0
+kjv.txt:line_first           len=  75020 fixed-alphabet best=10/24  single-unknown-alphabet hits=0
+kjv.txt:line_last            len=  75020 fixed-alphabet best=10/24  single-unknown-alphabet hits=0
+mobydick.txt:word_first      len= 222110 fixed-alphabet best=10/24  single-unknown-alphabet hits=0
+mobydick.txt:word_last       len= 222110 fixed-alphabet best=10/24  single-unknown-alphabet hits=0
+mobydick.txt:sent_first      len=  10891 fixed-alphabet best=9/24  single-unknown-alphabet hits=0
+mobydick.txt:para_first      len=   2872 fixed-alphabet best=8/24  single-unknown-alphabet hits=0
+mobydick.txt:line_first      len=  19224 fixed-alphabet best=9/24  single-unknown-alphabet hits=0
+mobydick.txt:line_last       len=  19224 fixed-alphabet best=9/24  single-unknown-alphabet hits=0
+K3words:word_first           len=    150 fixed-alphabet best=7/24  single-unknown-alphabet hits=0
+K3words:word_last            len=    150 fixed-alphabet best=7/24  single-unknown-alphabet hits=0
+NULL random 200k             len= 200000 fixed-alphabet best=10/24  single-unknown-alphabet hits=0

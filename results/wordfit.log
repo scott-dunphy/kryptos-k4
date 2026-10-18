@@ -1,0 +1,33 @@
+word start nK nonK_inside p_null
+TOWARDS         37  4  0  0.000
+SANBORN         37  3  0  0.000
+TOWARD          37  3  0  0.000
+STEPS           38  4  0  0.003
+STONE            3  3  0  0.003
+METERS          37  3  0  0.005
+ROCK            37  3  0  0.005
+ROSE            37  3  0  0.005
+SECONDS         35  3  0  0.005
+TORCH           37  3  0  0.005
+NORTH           40  3  0  0.007
+THROUGH         35  3  1  0.007
+ROCK            13  3  0  0.010
+SECRET          38  3  0  0.010
+SECONDS          4  3  0  0.013
+ABSCISSA        36  3  1  0.015
+MARKER          37  3  0  0.015
+ABSCISSA        37  3  0  0.018
+STAR            38  3  0  0.018
+WEBSTER         35  3  0  0.018
+
+TOTAL all-KRYPTOS-letters-fit placements: real 20; null mean 8.1 sd 3.9
+CT 34-62: OTWTQSJQSSEKZZWATJKLUDIAWINFB
+near-KRYPTOS count per pos 34-62: [2, 3, 1, 3, 4, 3, 1, 4, 3, 3, 0, 1, 1, 1, 1, 1, 3, 1, 1, 1, 2, 0, 1, 1, 1, 1, 2, 0, 0]
+mean near 34-62: 1.59  mean elsewhere non-crib: 1.09  uniform expectation: 1.35
+35 T fits: RTS
+36 W fits: Y
+37 T fits: RTS
+38 Q fits: RPOS
+39 S fits: RTS
+40 J fits: K
+41 Q fits: RPOS
