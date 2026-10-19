@@ -674,3 +674,61 @@ Infra: `clocklib.py` (scan k=a*K[o+i]+b over 12 variants, a in 12 units, all off
 ### Fable test 2 extension: key split with long keys (2026-10-18) (DONE, negative)
 - `run_keysplit_long.py`. Same model as run_keysplit_mask (arbitrary mask + dictionary/phrase key k1 + lore key k2, exact). k1 = /usr/share/dict words of 15-26 letters (6,716 at 15 ... 750 at 26) + every 11-26-letter substring of K0-K3 plaintext (closes the 14-letter cap and adds phrases at 11-14).
 - Validation: planted mask + ADINGANDTHEABSENCEO (19-letter K1 phrase) + KRYPTOS found. REAL: 0 word hits (stage A survivors 30,500); 3 shuffled CTs 0, 0, 0. NEGATIVE.
+
+### NYT K1/K2 charts vs copper: full cell-by-cell diff (2026-10-18) (DONE, no hidden rule)
+- Trigger: Fable `data/fable_nyt_mystified.md`. The "mystified" quote (ACA dinner 2013) refers to the K1/K2 matrix, not the K4 cribs.
+- Script: `run_chartdiff.py`. Re-read both scans at 2x zoom; KA-Vig re-encrypted every chart cell (PT + chart key row) and compared with the chart CT, the copper CT and the final PT. K1 63/63 and K2 185/185 chart cells cover copper lines 1-8.
+- Only 2 real differences in 248 cells:
+  - K1 idx 56: key row C for S (PALIMPCEST), which gives carved K = enc(L,C) = enc(Q,S), i.e. IQLUSION.
+  - K2 idx 114: chart PT O, CT E; the copper has R = enc(U,S), i.e. UNDERGRUUND (CT changed after the chart).
+- The chart "O" at K1 idx 59 and K2 idx 118 is Sanborn's D (verified on the zoom; enc gives D). The ticks under K (K1 idx 17) and Y (idx 32) mark correct cells. The row-1 key "B" at col 17 is a malformed E, which encrypts correctly.
+- No common rule between the two: the true key is S both times, but the copper letter needs key C (K1) vs key V (K2). PT shifts are AZ +5 / +6 and KA +3 / +16; CT shifts are KA +3 / -10. Positions were already checked for a pattern ("Visual positions of deliberate anomalies", chance).
+- Conclusion: the charts hold nothing beyond (a) the 31-column PT/key/CT sheet method, (b) '?' passed through without consuming key and (c) two hand changes (a missed key-row correction and a post-chart CT edit). All three are already exploited in the closed K4 tests (keyword key rows x 746 tableaus with <=3 alterations, sheet restarts, chart-cell keys). His "mystified" most likely reflects knowing the K4 mask/chart himself.
+
+### Misspelling positions / shifts as numeric keys (user lead, 2026-10-18) (DONE, negative)
+- `run_misspell_digits.py`. Values used: text indices (0/1-based, per text and in the K1+K2+K3 stream, with and without DESPARATLY's missing E); index within the word (+ PALIMPCEST C); copper (row,col) of the anomalies (+ predicted K4 64/71); AZ/KA letter shifts (L>Q, O>U, E>A, I>E, S>C); wrong and right letters. Each set in every order (all permutations for sets up to 6 values), as values mod 26 and as decimal-digit strings. 8,020 key x AZ/KA x sign tests, all phases.
+- Models: fixed alphabets with any constant; free mask on the PT side or the CT side (exact).
+- Result: best 6/24 fixed (null 6-8); 0 mask-consistent (null 0). Planted 28547 KA mask key recovered.
+
+### Guess the chart: keyword-mixed masking chart + aperiodic nuance key (2026-10-18) (DONE, negative)
+- `run_chartguess.py`. Chart = plain AZ or KA written over a keyword-mixed alphabet (every dict + lore word, forward and reversed, chart and its inverse): 1,583,769 charts. Two models: chart then shift (X), shift then chart (Y). AZ or KA numbering, global offset free, nuance window width 5 (0..4 / ±2) or 7 (±3), aperiodic.
+- REAL: width 5 max 18/24, width 7 max 19/24. RANDOM charts on the real CT give the same: 18/24 and 20/24. Shuffled CT: 15-16 and 17-19. So the real CT beats shuffles (the known letter-class signal) but keyword charts are no better than random charts. Planted SHADOW chart + 0..4 key: 24/24.
+- Verdict: the masking chart is not a keyword alphabet, under either composition order, with a small aperiodic key. With no K5, this was the last cheap structured-chart family that 24 cribs can decide.
+
+### CONDI-type keys (2026-10-18) (DONE, negative)
+- `run_condi.py`. One keyed alphabet T (395,948: AZ, KA, every dict + lore keyword, forward and reversed).
+- Model: t(C_i) -/+ t(P_i) = ±t(D_{i-lag}) + c. Driver D = PT (ACA CONDI, autokey-like) or CT; lag 1-6; c free.
+- Exact on every checkable crib (PT driver: crib-internal pairs, 18-22 checks; CT driver: all 24), <=1 fault allowed.
+- Planted SHADOW CONDI and KA CT-driven lag-2 Beaufort both found. REAL 0 hits; 3 shuffled nulls 0. NEGATIVE.
+
+### Hagelin M-209 (2026-10-18) (INCONCLUSIVE, stopped)
+- `run_m209.py`. Pins b_w[i mod L_w] (26,25,23,21,19,17), lug cage as 22 type counts (sum 27), Beaufort on AZ + free offset. Annealing: crib fit first, then quadgram language score.
+- The cribs share many pins (gaps 34/38/42/46/50/51/52), so a fitting machine would force most other plaintext letters.
+- Crib-only fit, 6 restarts x 1M iterations: planted M-209 reaches 0 misses; REAL best 1 miss (in 67-73); random-crib nulls best 1. Real == null, so nothing either way.
+- z3 integer model: no answer after 10 min (unknown). Stopped. Deciding it needs a dedicated SAT/ILP over pins + lug cage (about a day of work). Low prior: machine, plain AZ, does not explain the KRYPTOS-letter signal.
+
+### Extinct / other-language plaintext (user premise: Sanborn ignored the "no extinct language" order) (2026-10-18) (DONE, negative)
+- `data/lang/build_lm.py`: letter 4-gram models built the same way for each language:
+
+  | Code | Language | Source | Letters |
+  |---|---|---|---|
+  | la | Latin | Caesar BG 1-7, Aeneid 1-6, Vulgate Gen/Ex/Mt, Cicero Cat. 1 (thelatinlibrary.com) | 794k |
+  | ang | Old English | Beowulf verse (Gutenberg 9700) | 93k |
+  | de | German | Faust I (Gutenberg 2229) | 151k |
+  | egy | Middle Egyptian | TLA Earlier Egyptian transliteration, 6,000 sentences (HF thesaurus-linguae-aegyptiae), flattened: ꜣ/ꜥ>A, ḫ>KH, š>SH, ḏ>DJ, ṯ>TJ | 108k |
+  | en | English baseline | Moby Dick | 970k |
+
+- `run_langdecode.py`: run_chartdecode model (sigma + k 0..4, cribs fixed, 64/71 exempt), 6 restarts x 6000 iterations, scored with each model. Each language: REAL vs 3 non-crib-shuffled nulls, plus a planted held-out passage of that language. Log: `results/langdecode.log`.
+- REAL minus best null: en -0.005, la -0.041, ang -0.064, de -0.030, egy -0.028. REAL is never above its nulls, and restart agreement is never above the nulls.
+- Planted recovery is weak: en 0.25, la 0.30, ang 0.42, de 0.56, egy 0.33. That is low power, but a non-English plaintext should still push REAL above its nulls, and in no language does it.
+
+### Translated lore words as keywords (2026-10-18) (DONE, negative)
+- `data/lore_translations.py`: 478 romanized translations of ~45 lore concepts (shadow, light, hidden, clock, wall, northeast, message, palimpsest, tomb, key, layer two, compass, Egypt, gold, candle, truth, spy, KGB...). Languages: Latin, German, Russian, Greek, Arabic, French, Italian, Spanish, Egyptian. Precedent: the Cyrillic Projector's keyword TEN' (shadow).
+- With the English lore words this gives 521 words and 1,000 keyed alphabets (forward and reversed). `run_foreign_lore.py`, five models:
+  - M1: keyed tableau + word key, all phases, 3 rules, <=3 mismatches.
+  - M2: keyed tableau + any periodic key p1-24.
+  - M3: Quagmire, PT alphabet x CT alphabet (1M pairs), any periodic key.
+  - M4: mask + pinned word table on KA/AZ.
+  - M5: keyword chart + aperiodic 0..4 / ±3 key.
+- REAL: M1 best 16 mismatches (nulls 15); M2 0; M3 0 consistent; M4 0 exact, 0 one-slip; M5 16/18 (nulls 14-16/16-18, random alphabets 15/18). All chance.
+- Planted Projector-style UMBRA tableau + CLAVIS key: found by M1 (0 mismatches), M2 and M3.

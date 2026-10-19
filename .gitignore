@@ -19,3 +19,4 @@ data/texts2/
 # bulky binary results
 results/*.npy
 results/anneal/*.npy
+data/lang/*.npy
